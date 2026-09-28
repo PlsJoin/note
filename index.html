@@ -18,22 +18,34 @@ body {
 }
 
 body {
-    background: #f5f3ee;
-    color: #111;
     font-family:
         "Yu Gothic UI",
         "Yu Gothic",
         "Meiryo",
         sans-serif;
+
+    background: #ffffff;
+    color: #111111;
+    overflow: hidden;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    color: inherit;
 }
 
 /* =========================
-   全体
+   アプリ全体
 ========================= */
 
 .app {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -43,52 +55,74 @@ body {
 ========================= */
 
 .header {
-    height: 72px;
-    border-bottom: 1px solid #111;
+    height: 58px;
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 32px;
-    background: #f5f3ee;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #d7d7d7;
+    background: #ffffff;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 13px;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 19px;
     font-weight: 900;
-    letter-spacing: -1px;
+    letter-spacing: -0.7px;
 }
 
-.logo span {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-left: 8px;
+.logo-line {
+    width: 1px;
+    height: 20px;
+    background: #cfcfcf;
 }
 
-.header-right {
+.current-date {
+    font-size: 12px;
+    color: #555555;
+}
+
+.header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
 }
 
-.clock {
-    font-size: 13px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-}
+.header-button {
+    height: 34px;
 
-.new-button {
-    border: 1px solid #111;
-    background: #111;
-    color: white;
-    padding: 10px 18px;
-    font-size: 13px;
+    padding: 0 13px;
+
+    border: 1px solid #cfcfcf;
+    background: #ffffff;
+
+    font-size: 12px;
     font-weight: 700;
+
     cursor: pointer;
 }
 
-.new-button:hover {
-    background: #333;
+.header-button:hover {
+    background: #f4f4f4;
+}
+
+.header-button.primary {
+    border-color: #111111;
+    background: #111111;
+    color: #ffffff;
+}
+
+.header-button.primary:hover {
+    background: #292929;
 }
 
 /* =========================
@@ -96,413 +130,489 @@ body {
 ========================= */
 
 .main {
-    width: min(1180px, 100%);
-    margin: 0 auto;
-    padding: 55px 30px 80px;
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
 }
 
 /* =========================
-   入力エリア
+   サイドバー
 ========================= */
 
-.write-area {
-    max-width: 850px;
-    margin: 0 auto 80px;
+.sidebar {
+    width: 275px;
+    flex-shrink: 0;
+
+    border-right: 1px solid #d7d7d7;
+
+    background: #fafafa;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
 }
 
-.write-label {
+/* 検索 */
+
+.search-area {
+    padding: 14px 14px 12px;
+}
+
+.search-box {
+    width: 100%;
+    height: 34px;
+
+    border: 1px solid #d2d2d2;
+    background: #ffffff;
+
+    outline: none;
+
+    padding: 0 11px;
+
     font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
+    color: #111111;
 }
 
-.write-title {
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.1;
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin: 0 0 30px;
+.search-box:focus {
+    border-color: #111111;
 }
 
-.editor-wrap {
-    border-top: 2px solid #111;
-    border-bottom: 1px solid #111;
+.search-box::placeholder {
+    color: #999999;
+}
+
+/* =========================
+   カレンダー
+========================= */
+
+.calendar-section {
+    padding: 0 14px 14px;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+.calendar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 38px;
+}
+
+.month-label {
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.month-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.month-button {
+    width: 27px;
+    height: 27px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+    line-height: 1;
+}
+
+.month-button:hover {
+    background: #e9e9e9;
+}
+
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    margin-bottom: 3px;
+}
+
+.weekday {
+    text-align: center;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    color: #777777;
+
+    padding: 4px 0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 2px;
+}
+
+.day {
+    position: relative;
+
+    height: 29px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 11px;
+    color: #222222;
+}
+
+.day:hover {
+    background: #e9e9e9;
+}
+
+.day.other-month {
+    color: #b8b8b8;
+}
+
+.day.today {
+    font-weight: 900;
+}
+
+.day.selected {
+    background: #111111;
+    color: #ffffff;
+}
+
+.day.has-note::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 3px;
+
+    width: 3px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #111111;
+}
+
+.day.selected.has-note::after {
+    background: #ffffff;
+}
+
+/* =========================
+   サイド下部
+========================= */
+
+.sidebar-bottom {
+    flex: 1;
+    min-height: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 14px;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.note-list {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+}
+
+.note-item {
+    position: relative;
+
+    padding: 11px 14px;
+
+    border-bottom: 1px solid #e8e8e8;
+
+    cursor: pointer;
+}
+
+.note-item:hover {
+    background: #f0f0f0;
+}
+
+.note-item.active {
+    background: #e7e7e7;
+}
+
+.note-item-title {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    margin-bottom: 4px;
+}
+
+.note-item-preview {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #777777;
+
+    font-size: 10px;
+}
+
+.note-item-date {
+    margin-top: 5px;
+
+    color: #999999;
+
+    font-size: 9px;
+}
+
+.empty-list {
+    padding: 25px 14px;
+
+    color: #999999;
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* =========================
+   エディタ
+========================= */
+
+.editor-area {
+    flex: 1;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #ffffff;
+}
+
+.editor-top {
+    height: 64px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.editor-heading {
+    min-width: 0;
+}
+
+.editor-date {
+    font-size: 11px;
+    color: #777777;
+
+    margin-bottom: 3px;
+}
+
+.editor-title {
+    width: 100%;
+
+    border: 0;
+    outline: 0;
+
+    padding: 0;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.editor-title::placeholder {
+    color: #aaa;
+}
+
+.editor-status {
+    flex-shrink: 0;
+
+    font-size: 10px;
+    color: #999999;
+}
+
+/* =========================
+   本文
+========================= */
+
+.editor-body {
+    flex: 1;
+    min-height: 0;
+
+    padding: 30px;
+
+    overflow-y: auto;
 }
 
 .editor {
     width: 100%;
-    min-height: 180px;
-    padding: 25px 0;
+    height: 100%;
+
+    min-height: 300px;
+
+    resize: none;
+
     border: 0;
     outline: 0;
-    resize: vertical;
+
+    padding: 0;
+
     background: transparent;
-    color: #111;
-    font-family: inherit;
-    font-size: 18px;
+
+    color: #000000;
+
+    font-family:
+        "Yu Gothic UI",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 15px;
     line-height: 1.9;
 }
 
 .editor::placeholder {
-    color: #777;
+    color: #999999;
 }
 
-.write-bottom {
+/* =========================
+   下部ステータス
+========================= */
+
+.statusbar {
+    height: 32px;
+    flex-shrink: 0;
+
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
+    padding: 0 14px 0 30px;
+
+    border-top: 1px solid #e5e5e5;
+
+    color: #888888;
+
+    font-size: 10px;
+}
+
+.status-left,
+.status-right {
+    display: flex;
     align-items: center;
-    padding-top: 15px;
-}
-
-.hint {
-    color: #666;
-    font-size: 12px;
-}
-
-.save-button {
-    border: 1px solid #111;
-    background: transparent;
-    color: #111;
-    padding: 10px 24px;
-    font-size: 13px;
-    font-weight: 900;
-    cursor: pointer;
-}
-
-.save-button:hover {
-    background: #111;
-    color: white;
+    gap: 14px;
 }
 
 /* =========================
-   検索
+   モバイル
 ========================= */
 
-.timeline-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    border-bottom: 2px solid #111;
-    padding-bottom: 14px;
-    margin-bottom: 0;
-}
+@media (max-width: 760px) {
 
-.timeline-title {
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: -1px;
-}
-
-.count {
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.search {
-    width: 250px;
-    border: 0;
-    border-bottom: 1px solid #111;
-    background: transparent;
-    outline: none;
-    padding: 8px 0;
-    font-family: inherit;
-    font-size: 13px;
-}
-
-/* =========================
-   タイムライン
-========================= */
-
-.timeline {
-    position: relative;
-}
-
-.timeline::before {
-    content: "";
-    position: absolute;
-    left: 130px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: #111;
-}
-
-.note {
-    position: relative;
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    border-bottom: 1px solid #c9c6bf;
-    min-height: 145px;
-}
-
-.note-time {
-    padding: 25px 25px 25px 0;
-    text-align: right;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1.5;
-}
-
-.note-time .date {
-    display: block;
-    font-size: 11px;
-    color: #666;
-    margin-bottom: 4px;
-}
-
-.note-content {
-    padding: 25px 0 25px 38px;
-    cursor: pointer;
-    position: relative;
-}
-
-.note-content:hover {
-    background: rgba(0, 0, 0, 0.025);
-}
-
-.note-dot {
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    background: #111;
-    border-radius: 50%;
-    left: -4px;
-    top: 31px;
-}
-
-.note-text {
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-size: 16px;
-    line-height: 1.8;
-    font-weight: 500;
-    max-width: 760px;
-}
-
-.note-meta {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 13px;
-    color: #777;
-    font-size: 11px;
-}
-
-.pin {
-    cursor: pointer;
-    border: 0;
-    background: transparent;
-    color: #777;
-    padding: 0;
-    font-family: inherit;
-    font-size: 11px;
-}
-
-.pin.active {
-    color: #111;
-    font-weight: 900;
-}
-
-/* =========================
-   空状態
-========================= */
-
-.empty {
-    padding: 80px 20px;
-    text-align: center;
-    color: #777;
-    border-bottom: 1px solid #111;
-}
-
-.empty-big {
-    font-size: 18px;
-    font-weight: 900;
-    color: #111;
-    margin-bottom: 10px;
-}
-
-.empty-small {
-    font-size: 12px;
-}
-
-/* =========================
-   編集モーダル
-========================= */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(245, 243, 238, 0.94);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    z-index: 100;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    width: min(850px, 100%);
-    border: 1px solid #111;
-    background: #f5f3ee;
-    padding: 30px;
-}
-
-.modal-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.modal-title {
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.close {
-    border: 0;
-    background: transparent;
-    font-size: 20px;
-    cursor: pointer;
-    color: #111;
-}
-
-.edit-area {
-    width: 100%;
-    min-height: 300px;
-    border: 0;
-    border-top: 2px solid #111;
-    border-bottom: 1px solid #111;
-    outline: none;
-    resize: vertical;
-    background: transparent;
-    padding: 25px 0;
-    color: #111;
-    font-family: inherit;
-    font-size: 17px;
-    line-height: 1.9;
-}
-
-.modal-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 18px;
-}
-
-.delete-button {
-    border: 0;
-    background: transparent;
-    color: #b00000;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.update-button {
-    border: 1px solid #111;
-    background: #111;
-    color: white;
-    padding: 10px 22px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 900;
-}
-
-/* =========================
-   レスポンシブ
-========================= */
-
-@media (max-width: 700px) {
+    body {
+        overflow: auto;
+    }
 
     .header {
-        height: 62px;
-        padding: 0 18px;
+        padding: 0 12px;
     }
 
-    .logo {
-        font-size: 21px;
-    }
-
-    .logo span {
+    .logo-line,
+    .current-date {
         display: none;
     }
 
-    .clock {
+    .header-button:not(.primary) {
         display: none;
     }
 
     .main {
-        padding: 35px 18px 60px;
+        height: calc(100vh - 58px);
     }
 
-    .write-area {
-        margin-bottom: 55px;
+    .sidebar {
+        width: 210px;
     }
 
-    .write-title {
-        font-size: 36px;
-        letter-spacing: -1.5px;
+    .editor-top {
+        padding: 0 18px;
     }
 
-    .editor {
-        font-size: 16px;
+    .editor-body {
+        padding: 20px 18px;
     }
 
-    .timeline-head {
-        display: block;
+    .statusbar {
+        padding-left: 18px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .sidebar {
+        width: 175px;
     }
 
-    .timeline-title {
-        margin-bottom: 18px;
+    .calendar-section {
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
-    .search {
-        width: 100%;
+    .search-area {
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
-    .timeline::before {
-        left: 74px;
+    .sidebar-title {
+        padding-left: 8px;
     }
 
-    .note {
-        grid-template-columns: 74px 1fr;
+    .note-item {
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
-    .note-time {
-        padding: 20px 15px 20px 0;
-        font-size: 10px;
+    .editor-top {
+        padding: 0 12px;
     }
 
-    .note-time .date {
-        font-size: 9px;
+    .editor-body {
+        padding: 18px 12px;
     }
 
-    .note-content {
-        padding: 20px 0 20px 25px;
-    }
-
-    .note-dot {
-        top: 26px;
-    }
-
-    .note-text {
-        font-size: 14px;
-    }
-
-    .modal {
-        padding: 15px;
-    }
-
-    .modal-box {
-        padding: 20px;
+    .statusbar {
+        padding-left: 12px;
     }
 }
 </style>
@@ -512,81 +622,228 @@ body {
 
 <div class="app">
 
+    <!-- =========================
+         ヘッダー
+    ========================== -->
+
     <header class="header">
-        <div class="logo">
-            DOL NOTE
-            <span>THINK / WRITE / KEEP</span>
+
+        <div class="logo-area">
+
+            <div class="logo">
+                DOL NOTE
+            </div>
+
+            <div class="logo-line"></div>
+
+            <div class="current-date" id="currentDate">
+                2026年9月28日
+            </div>
+
         </div>
 
-        <div class="header-right">
-            <div class="clock" id="clock"></div>
+        <div class="header-actions">
 
-            <button class="new-button" id="newButton">
+            <button
+                class="header-button"
+                id="todayButton"
+            >
+                今日
+            </button>
+
+            <button
+                class="header-button"
+                id="saveTxtButton"
+            >
+                TXT保存
+            </button>
+
+            <button
+                class="header-button primary"
+                id="newButton"
+            >
                 ＋ 新しいメモ
             </button>
+
         </div>
+
     </header>
 
 
+    <!-- =========================
+         メイン
+    ========================== -->
+
     <main class="main">
 
-        <section class="write-area">
+        <!-- =====================
+             左サイド
+        ====================== -->
 
-            <div class="write-label">
-                NEW NOTE
-            </div>
+        <aside class="sidebar">
 
-            <h1 class="write-title">
-                今、何を考えてる？
-            </h1>
-
-            <div class="editor-wrap">
-                <textarea
-                    id="editor"
-                    class="editor"
-                    placeholder="思いついたことを、そのまま書く。&#10;&#10;タイトルはいりません。きれいにまとめる必要もありません。"
-                ></textarea>
-            </div>
-
-            <div class="write-bottom">
-
-                <div class="hint">
-                    Ctrl + Enter で保存
-                </div>
-
-                <button class="save-button" id="saveButton">
-                    保存する
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <section>
-
-            <div class="timeline-head">
-
-                <div>
-                    <div class="timeline-title">
-                        TIMELINE
-                    </div>
-
-                    <div class="count" id="count">
-                        0 NOTES
-                    </div>
-                </div>
+            <div class="search-area">
 
                 <input
                     type="search"
-                    class="search"
-                    id="search"
+                    class="search-box"
+                    id="searchInput"
                     placeholder="メモを検索"
                 >
 
             </div>
 
-            <div class="timeline" id="timeline"></div>
+
+            <!-- カレンダー -->
+
+            <section class="calendar-section">
+
+                <div class="calendar-top">
+
+                    <div
+                        class="month-label"
+                        id="monthLabel"
+                    >
+                        2026年9月
+                    </div>
+
+                    <div class="month-controls">
+
+                        <button
+                            class="month-button"
+                            id="prevMonth"
+                            title="前の月"
+                        >
+                            ‹
+                        </button>
+
+                        <button
+                            class="month-button"
+                            id="nextMonth"
+                            title="次の月"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="calendar-week">
+
+                    <div class="weekday">日</div>
+                    <div class="weekday">月</div>
+                    <div class="weekday">火</div>
+                    <div class="weekday">水</div>
+                    <div class="weekday">木</div>
+                    <div class="weekday">金</div>
+                    <div class="weekday">土</div>
+
+                </div>
+
+
+                <div
+                    class="calendar-grid"
+                    id="calendarGrid"
+                ></div>
+
+            </section>
+
+
+            <!-- メモ一覧 -->
+
+            <section class="sidebar-bottom">
+
+                <div class="sidebar-title">
+                    メモ
+                </div>
+
+                <div
+                    class="note-list"
+                    id="noteList"
+                ></div>
+
+            </section>
+
+        </aside>
+
+
+        <!-- =====================
+             エディタ
+        ====================== -->
+
+        <section class="editor-area">
+
+            <div class="editor-top">
+
+                <div class="editor-heading">
+
+                    <div
+                        class="editor-date"
+                        id="editorDate"
+                    >
+                        メモ
+                    </div>
+
+                    <input
+                        class="editor-title"
+                        id="titleInput"
+                        placeholder="タイトルなし"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <div
+                    class="editor-status"
+                    id="editorStatus"
+                >
+                    保存済み
+                </div>
+
+            </div>
+
+
+            <div class="editor-body">
+
+                <textarea
+                    class="editor"
+                    id="editor"
+                    spellcheck="true"
+                    placeholder="ここにメモを書く..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="statusbar">
+
+                <div class="status-left">
+
+                    <span id="wordCount">
+                        0文字
+                    </span>
+
+                    <span id="lineCount">
+                        1行
+                    </span>
+
+                </div>
+
+                <div class="status-right">
+
+                    <span>
+                        自動保存
+                    </span>
+
+                    <span id="saveStatus">
+                        保存済み
+                    </span>
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -595,85 +852,156 @@ body {
 </div>
 
 
-<!-- 編集モーダル -->
-
-<div class="modal" id="modal">
-
-    <div class="modal-box">
-
-        <div class="modal-top">
-
-            <div class="modal-title">
-                EDIT NOTE
-            </div>
-
-            <button class="close" id="closeModal">
-                ×
-            </button>
-
-        </div>
-
-        <textarea
-            class="edit-area"
-            id="editArea"
-        ></textarea>
-
-        <div class="modal-bottom">
-
-            <button class="delete-button" id="deleteButton">
-                このメモを削除
-            </button>
-
-            <button class="update-button" id="updateButton">
-                保存する
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
 <script>
 
-const STORAGE_KEY = "dol_note_timeline_v1";
+/* =========================================================
+   DOL NOTE
+========================================================= */
 
-let notes = [];
-let editingId = null;
+const STORAGE_KEY = "DOL_NOTE_DATA_V1";
 
 
 /* =========================
-   初期化
+   状態
 ========================= */
 
-function loadNotes() {
+let notes = [];
+
+let selectedNoteId = null;
+
+let calendarYear;
+let calendarMonth;
+
+
+/* =========================
+   今日
+========================= */
+
+const today = new Date();
+
+calendarYear = today.getFullYear();
+calendarMonth = today.getMonth();
+
+
+/* =========================
+   DOM
+========================= */
+
+const calendarGrid =
+    document.getElementById("calendarGrid");
+
+const monthLabel =
+    document.getElementById("monthLabel");
+
+const noteList =
+    document.getElementById("noteList");
+
+const titleInput =
+    document.getElementById("titleInput");
+
+const editor =
+    document.getElementById("editor");
+
+const editorDate =
+    document.getElementById("editorDate");
+
+const editorStatus =
+    document.getElementById("editorStatus");
+
+const saveStatus =
+    document.getElementById("saveStatus");
+
+const wordCount =
+    document.getElementById("wordCount");
+
+const lineCount =
+    document.getElementById("lineCount");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+
+/* =========================
+   保存データ読み込み
+========================= */
+
+function loadData() {
 
     try {
 
-        const saved = localStorage.getItem(STORAGE_KEY);
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
 
-        if (saved) {
-            notes = JSON.parse(saved);
+        if (!saved) {
+
+            notes = [];
+
+            createInitialNote();
+
+            return;
+
         }
 
-    } catch (error) {
+        const data = JSON.parse(saved);
+
+        if (Array.isArray(data)) {
+            notes = data;
+        } else {
+            notes = [];
+        }
+
+    } catch {
 
         notes = [];
 
     }
 
-    render();
-
 }
 
 
-function saveNotes() {
+/* =========================
+   データ保存
+========================= */
+
+function saveData() {
 
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(notes)
     );
+
+    saveStatus.textContent = "保存済み";
+
+}
+
+
+/* =========================
+   初期メモ
+========================= */
+
+function createInitialNote() {
+
+    const now = new Date();
+
+    const note = {
+
+        id: createId(),
+
+        title: "",
+
+        content: "",
+
+        date: formatDateKey(now),
+
+        updated: Date.now()
+
+    };
+
+    notes.push(note);
+
+    selectedNoteId = note.id;
+
+    saveData();
 
 }
 
@@ -684,78 +1012,381 @@ function saveNotes() {
 
 function createId() {
 
-    return Date.now().toString(36)
-        + Math.random().toString(36).slice(2);
+    return (
+        Date.now().toString(36) +
+        Math.random().toString(36).slice(2)
+    );
 
 }
 
 
 /* =========================
-   日付
+   日付キー
 ========================= */
 
-function formatDate(timestamp) {
+function formatDateKey(date) {
 
-    const d = new Date(timestamp);
+    const y = date.getFullYear();
 
-    const y = d.getFullYear();
-    const m = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
+    const m =
+        String(date.getMonth() + 1)
+        .padStart(2, "0");
 
-    return `${y}/${m}/${day}`;
+    const d =
+        String(date.getDate())
+        .padStart(2, "0");
 
-}
-
-
-function formatTime(timestamp) {
-
-    const d = new Date(timestamp);
-
-    const h = String(d.getHours()).padStart(2, "0");
-    const m = String(d.getMinutes()).padStart(2, "0");
-
-    return `${h}:${m}`;
+    return `${y}-${m}-${d}`;
 
 }
 
 
 /* =========================
-   メモ追加
+   表示用日付
 ========================= */
 
-function addNote() {
+function formatJapaneseDate(dateKey) {
 
-    const editor = document.getElementById("editor");
+    const parts = dateKey.split("-");
 
-    const text = editor.value.trim();
+    return `${Number(parts[0])}年${Number(parts[1])}月${Number(parts[2])}日`;
 
-    if (!text) {
+}
 
-        editor.focus();
 
-        return;
+/* =========================
+   今日の判定
+========================= */
+
+function isToday(dateKey) {
+
+    return dateKey === formatDateKey(new Date());
+
+}
+
+
+/* =========================
+   カレンダー描画
+========================= */
+
+function renderCalendar() {
+
+    monthLabel.textContent =
+        `${calendarYear}年${calendarMonth + 1}月`;
+
+    calendarGrid.innerHTML = "";
+
+
+    const firstDay =
+        new Date(
+            calendarYear,
+            calendarMonth,
+            1
+        );
+
+    const lastDay =
+        new Date(
+            calendarYear,
+            calendarMonth + 1,
+            0
+        );
+
+
+    const startWeekday =
+        firstDay.getDay();
+
+    const daysInMonth =
+        lastDay.getDate();
+
+
+    /* 前月 */
+
+    const previousLastDay =
+        new Date(
+            calendarYear,
+            calendarMonth,
+            0
+        ).getDate();
+
+
+    for (
+        let i = startWeekday - 1;
+        i >= 0;
+        i--
+    ) {
+
+        const dayNumber =
+            previousLastDay - i;
+
+        const date =
+            new Date(
+                calendarYear,
+                calendarMonth - 1,
+                dayNumber
+            );
+
+        addCalendarDay(
+            date,
+            true
+        );
 
     }
+
+
+    /* 今月 */
+
+    for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+    ) {
+
+        const date =
+            new Date(
+                calendarYear,
+                calendarMonth,
+                day
+            );
+
+        addCalendarDay(
+            date,
+            false
+        );
+
+    }
+
+
+    /* 次月 */
+
+    const totalCells =
+        startWeekday + daysInMonth;
+
+    const remaining =
+        Math.ceil(totalCells / 7) * 7
+        - totalCells;
+
+
+    for (
+        let day = 1;
+        day <= remaining;
+        day++
+    ) {
+
+        const date =
+            new Date(
+                calendarYear,
+                calendarMonth + 1,
+                day
+            );
+
+        addCalendarDay(
+            date,
+            true
+        );
+
+    }
+
+}
+
+
+/* =========================
+   カレンダーの日付
+========================= */
+
+function addCalendarDay(
+    date,
+    otherMonth
+) {
+
+    const key =
+        formatDateKey(date);
+
+
+    const button =
+        document.createElement("button");
+
+    button.className = "day";
+
+    if (otherMonth) {
+        button.classList.add("other-month");
+    }
+
+    if (isToday(key)) {
+        button.classList.add("today");
+    }
+
+    if (
+        notes.some(
+            note => note.date === key
+        )
+    ) {
+        button.classList.add("has-note");
+    }
+
+    if (
+        selectedNoteId &&
+        getSelectedNote() &&
+        getSelectedNote().date === key
+    ) {
+        button.classList.add("selected");
+    }
+
+
+    button.textContent =
+        date.getDate();
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            selectDate(key);
+
+        }
+    );
+
+
+    calendarGrid.appendChild(button);
+
+}
+
+
+/* =========================
+   日付を選択
+========================= */
+
+function selectDate(dateKey) {
+
+    const sameDateNotes =
+        notes.filter(
+            note => note.date === dateKey
+        );
+
+
+    if (sameDateNotes.length > 0) {
+
+        const newest =
+            [...sameDateNotes]
+                .sort(
+                    (a, b) =>
+                        b.updated - a.updated
+                )[0];
+
+        openNote(newest.id);
+
+    } else {
+
+        createNoteForDate(dateKey);
+
+    }
+
+}
+
+
+/* =========================
+   日付指定でメモ作成
+========================= */
+
+function createNoteForDate(dateKey) {
 
     const note = {
 
         id: createId(),
 
-        text: text,
+        title: "",
 
-        created: Date.now(),
+        content: "",
 
-        pinned: false
+        date: dateKey,
+
+        updated: Date.now()
 
     };
 
-    notes.unshift(note);
+    notes.push(note);
 
-    saveNotes();
+    selectedNoteId = note.id;
 
-    editor.value = "";
+    saveData();
 
-    render();
+    renderAll();
+
+    titleInput.focus();
+
+}
+
+
+/* =========================
+   新しい普通のメモ
+========================= */
+
+function createNewNote() {
+
+    const now =
+        new Date();
+
+    const note = {
+
+        id: createId(),
+
+        title: "",
+
+        content: "",
+
+        date: formatDateKey(now),
+
+        updated: Date.now()
+
+    };
+
+    notes.push(note);
+
+    selectedNoteId = note.id;
+
+    calendarYear =
+        now.getFullYear();
+
+    calendarMonth =
+        now.getMonth();
+
+    saveData();
+
+    renderAll();
+
+    titleInput.focus();
+
+}
+
+
+/* =========================
+   メモを開く
+========================= */
+
+function openNote(id) {
+
+    const note =
+        notes.find(
+            note => note.id === id
+        );
+
+    if (!note) {
+        return;
+    }
+
+    selectedNoteId = id;
+
+    const date =
+        new Date(
+            note.date + "T00:00:00"
+        );
+
+    calendarYear =
+        date.getFullYear();
+
+    calendarMonth =
+        date.getMonth();
+
+    renderAll();
 
     editor.focus();
 
@@ -763,61 +1394,160 @@ function addNote() {
 
 
 /* =========================
-   表示
+   選択中メモ
 ========================= */
 
-function render() {
+function getSelectedNote() {
 
-    const timeline = document.getElementById("timeline");
+    return notes.find(
+        note => note.id === selectedNoteId
+    );
 
-    const search = document
-        .getElementById("search")
-        .value
-        .trim()
-        .toLowerCase();
-
-    let filtered = notes.filter(note => {
-
-        if (!search) {
-            return true;
-        }
-
-        return note.text
-            .toLowerCase()
-            .includes(search);
-
-    });
+}
 
 
-    filtered.sort((a, b) => {
+/* =========================
+   エディタ表示
+========================= */
 
-        if (a.pinned !== b.pinned) {
-            return a.pinned ? -1 : 1;
-        }
+function loadEditor() {
 
-        return b.created - a.created;
+    const note =
+        getSelectedNote();
 
-    });
+    if (!note) {
+        return;
+    }
+
+    titleInput.value =
+        note.title || "";
+
+    editor.value =
+        note.content || "";
+
+    editorDate.textContent =
+        formatJapaneseDate(
+            note.date
+        );
+
+    updateStats();
+
+}
 
 
-    document.getElementById("count").textContent =
-        `${filtered.length} NOTES`;
+/* =========================
+   入力変更
+========================= */
+
+function updateCurrentNote() {
+
+    const note =
+        getSelectedNote();
+
+    if (!note) {
+        return;
+    }
+
+    note.title =
+        titleInput.value;
+
+    note.content =
+        editor.value;
+
+    note.updated =
+        Date.now();
+
+    saveStatus.textContent =
+        "保存中...";
+
+    saveData();
+
+    renderNoteList();
+
+    renderCalendar();
+
+    updateStats();
+
+    setTimeout(
+        () => {
+
+            saveStatus.textContent =
+                "保存済み";
+
+        },
+        300
+    );
+
+}
+
+
+/* =========================
+   統計
+========================= */
+
+function updateStats() {
+
+    const text =
+        editor.value;
+
+    wordCount.textContent =
+        `${text.length}文字`;
+
+    const lines =
+        text.length === 0
+            ? 1
+            : text.split("\n").length;
+
+    lineCount.textContent =
+        `${lines}行`;
+
+}
+
+
+/* =========================
+   メモ一覧
+========================= */
+
+function renderNoteList() {
+
+    const keyword =
+        searchInput.value
+            .trim()
+            .toLowerCase();
+
+
+    let filtered =
+        [...notes];
+
+
+    if (keyword) {
+
+        filtered =
+            filtered.filter(note => {
+
+                const target =
+                    `${note.title} ${note.content}`
+                        .toLowerCase();
+
+                return target.includes(keyword);
+
+            });
+
+    }
+
+
+    filtered.sort(
+        (a, b) =>
+            b.updated - a.updated
+    );
 
 
     if (filtered.length === 0) {
 
-        timeline.innerHTML = `
+        noteList.innerHTML = `
 
-            <div class="empty">
-
-                <div class="empty-big">
-                    まだメモがありません。
-                </div>
-
-                <div class="empty-small">
-                    思いついたことを上に書いてください。
-                </div>
-
+            <div class="empty-list">
+                メモがありません。
             </div>
 
         `;
@@ -827,84 +1557,65 @@ function render() {
     }
 
 
-    timeline.innerHTML = filtered.map(note => {
+    noteList.innerHTML =
+        filtered.map(note => {
 
-        const escaped = escapeHTML(note.text);
+            const title =
+                note.title.trim()
+                    || "タイトルなし";
 
-        return `
 
-            <article class="note">
+            const preview =
+                note.content
+                    .replace(/\n/g, " ")
+                    .trim()
+                    || "本文なし";
 
-                <div class="note-time">
 
-                    <span class="date">
-                        ${formatDate(note.created)}
-                    </span>
-
-                    ${formatTime(note.created)}
-
-                </div>
-
+            return `
 
                 <div
-                    class="note-content"
+                    class="note-item ${
+                        note.id === selectedNoteId
+                            ? "active"
+                            : ""
+                    }"
                     data-id="${note.id}"
                 >
 
-                    <span class="note-dot"></span>
-
-                    <div class="note-text">
-                        ${escaped}
+                    <div class="note-item-title">
+                        ${escapeHTML(title)}
                     </div>
 
-                    <div class="note-meta">
+                    <div class="note-item-preview">
+                        ${escapeHTML(preview)}
+                    </div>
 
-                        <button
-                            class="pin ${note.pinned ? "active" : ""}"
-                            data-pin="${note.id}"
-                        >
-                            ${note.pinned ? "PINNED" : "PIN"}
-                        </button>
-
+                    <div class="note-item-date">
+                        ${formatJapaneseDate(note.date)}
                     </div>
 
                 </div>
 
-            </article>
+            `;
 
-        `;
-
-    }).join("");
+        }).join("");
 
 
-    document.querySelectorAll(".note-content")
-        .forEach(element => {
+    document
+        .querySelectorAll(".note-item")
+        .forEach(item => {
 
-            element.addEventListener("click", event => {
+            item.addEventListener(
+                "click",
+                () => {
 
-                if (
-                    event.target.closest(".pin")
-                ) {
-                    return;
+                    openNote(
+                        item.dataset.id
+                    );
+
                 }
-
-                openEditor(element.dataset.id);
-
-            });
-
-        });
-
-
-    document.querySelectorAll("[data-pin]")
-        .forEach(button => {
-
-            button.addEventListener("click", event => {
-
-                event.stopPropagation();
-
-                togglePin(button.dataset.pin);
-
-            });
+            );
 
         });
 
@@ -912,7 +1623,149 @@ function render() {
 
 
 /* =========================
-   HTML安全処理
+   全体描画
+========================= */
+
+function renderAll() {
+
+    renderCalendar();
+
+    renderNoteList();
+
+    loadEditor();
+
+}
+
+
+/* =========================
+   削除
+========================= */
+
+function deleteCurrentNote() {
+
+    const note =
+        getSelectedNote();
+
+    if (!note) {
+        return;
+    }
+
+
+    const index =
+        notes.findIndex(
+            item =>
+                item.id === note.id
+        );
+
+
+    if (index === -1) {
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            "このメモを削除しますか？"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    notes.splice(
+        index,
+        1
+    );
+
+
+    if (notes.length === 0) {
+
+        createInitialNote();
+
+    } else {
+
+        const next =
+            notes[
+                Math.max(
+                    0,
+                    index - 1
+                )
+            ];
+
+        selectedNoteId =
+            next.id;
+
+    }
+
+
+    saveData();
+
+    renderAll();
+
+}
+
+
+/* =========================
+   TXT保存
+========================= */
+
+function saveTxt() {
+
+    const note =
+        getSelectedNote();
+
+    if (!note) {
+        return;
+    }
+
+
+    const title =
+        note.title.trim()
+        || "メモ";
+
+
+    const text =
+`${title}
+
+${formatJapaneseDate(note.date)}
+
+${note.content}`;
+
+
+    const blob =
+        new Blob(
+            [text],
+            {
+                type:
+                    "text/plain;charset=utf-8"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+        `${title}.txt`;
+
+    a.click();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================
+   HTMLエスケープ
 ========================= */
 
 function escapeHTML(text) {
@@ -922,269 +1775,254 @@ function escapeHTML(text) {
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;")
-        .replaceAll("\n", "<br>");
+        .replaceAll("'", "&#039;");
 
 }
 
 
 /* =========================
-   PIN
+   今日
 ========================= */
 
-function togglePin(id) {
+function goToday() {
 
-    const note = notes.find(
-        note => note.id === id
-    );
+    const now =
+        new Date();
 
-    if (!note) {
-        return;
+    calendarYear =
+        now.getFullYear();
+
+    calendarMonth =
+        now.getMonth();
+
+
+    const todayKey =
+        formatDateKey(now);
+
+
+    const existing =
+        notes.find(
+            note =>
+                note.date === todayKey
+        );
+
+
+    if (existing) {
+
+        openNote(existing.id);
+
+    } else {
+
+        createNoteForDate(
+            todayKey
+        );
+
     }
-
-    note.pinned = !note.pinned;
-
-    saveNotes();
-
-    render();
 
 }
 
 
 /* =========================
-   編集
-========================= */
-
-function openEditor(id) {
-
-    const note = notes.find(
-        note => note.id === id
-    );
-
-    if (!note) {
-        return;
-    }
-
-    editingId = id;
-
-    document.getElementById("editArea").value =
-        note.text;
-
-    document.getElementById("modal")
-        .classList.add("show");
-
-    setTimeout(() => {
-
-        document.getElementById("editArea")
-            .focus();
-
-    }, 50);
-
-}
-
-
-function closeEditor() {
-
-    editingId = null;
-
-    document.getElementById("modal")
-        .classList.remove("show");
-
-}
-
-
-function updateNote() {
-
-    if (!editingId) {
-        return;
-    }
-
-    const text =
-        document.getElementById("editArea")
-            .value
-            .trim();
-
-    if (!text) {
-        return;
-    }
-
-    const note = notes.find(
-        note => note.id === editingId
-    );
-
-    if (!note) {
-        return;
-    }
-
-    note.text = text;
-
-    saveNotes();
-
-    closeEditor();
-
-    render();
-
-}
-
-
-/* =========================
-   削除
-========================= */
-
-function deleteNote() {
-
-    if (!editingId) {
-        return;
-    }
-
-    const index = notes.findIndex(
-        note => note.id === editingId
-    );
-
-    if (index === -1) {
-        return;
-    }
-
-    notes.splice(index, 1);
-
-    saveNotes();
-
-    closeEditor();
-
-    render();
-
-}
-
-
-/* =========================
-   時計
-========================= */
-
-function updateClock() {
-
-    const now = new Date();
-
-    const y = now.getFullYear();
-    const m = String(now.getMonth() + 1).padStart(2, "0");
-    const d = String(now.getDate()).padStart(2, "0");
-
-    const h = String(now.getHours()).padStart(2, "0");
-    const min = String(now.getMinutes()).padStart(2, "0");
-
-    document.getElementById("clock").textContent =
-        `${y}/${m}/${d}  ${h}:${min}`;
-
-}
-
-setInterval(updateClock, 1000);
-
-updateClock();
-
-
-/* =========================
-   イベント
+   月移動
 ========================= */
 
 document
-    .getElementById("saveButton")
-    .addEventListener("click", addNote);
+    .getElementById("prevMonth")
+    .addEventListener(
+        "click",
+        () => {
 
+            calendarMonth--;
+
+            if (calendarMonth < 0) {
+
+                calendarMonth = 11;
+                calendarYear--;
+
+            }
+
+            renderCalendar();
+
+        }
+    );
+
+
+document
+    .getElementById("nextMonth")
+    .addEventListener(
+        "click",
+        () => {
+
+            calendarMonth++;
+
+            if (calendarMonth > 11) {
+
+                calendarMonth = 0;
+                calendarYear++;
+
+            }
+
+            renderCalendar();
+
+        }
+    );
+
+
+/* =========================
+   ボタン
+========================= */
 
 document
     .getElementById("newButton")
-    .addEventListener("click", () => {
-
-        document.getElementById("editor")
-            .focus();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
+    .addEventListener(
+        "click",
+        createNewNote
+    );
 
 
 document
-    .getElementById("search")
-    .addEventListener("input", render);
+    .getElementById("todayButton")
+    .addEventListener(
+        "click",
+        goToday
+    );
 
 
 document
-    .getElementById("closeModal")
-    .addEventListener("click", closeEditor);
+    .getElementById("saveTxtButton")
+    .addEventListener(
+        "click",
+        saveTxt
+    );
 
 
-document
-    .getElementById("updateButton")
-    .addEventListener("click", updateNote);
+/* =========================
+   入力
+========================= */
+
+titleInput.addEventListener(
+    "input",
+    updateCurrentNote
+);
 
 
-document
-    .getElementById("deleteButton")
-    .addEventListener("click", deleteNote);
+editor.addEventListener(
+    "input",
+    updateCurrentNote
+);
 
 
-/* Ctrl + Enter */
+searchInput.addEventListener(
+    "input",
+    renderNoteList
+);
 
-document
-    .getElementById("editor")
-    .addEventListener("keydown", event => {
+
+/* =========================
+   キーボード
+========================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        /* Ctrl + S */
 
         if (
             event.ctrlKey &&
-            event.key === "Enter"
+            event.key.toLowerCase() === "s"
         ) {
 
             event.preventDefault();
 
-            addNote();
+            saveData();
+
+            saveStatus.textContent =
+                "保存済み";
 
         }
 
-    });
 
-
-/* モーダル外クリック */
-
-document
-    .getElementById("modal")
-    .addEventListener("click", event => {
+        /* Ctrl + N */
 
         if (
-            event.target.id === "modal"
+            event.ctrlKey &&
+            event.key.toLowerCase() === "n"
         ) {
 
-            closeEditor();
+            event.preventDefault();
+
+            createNewNote();
 
         }
 
-    });
 
+        /* Ctrl + F */
 
-/* Escape */
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "f"
+        ) {
 
-document.addEventListener("keydown", event => {
+            event.preventDefault();
 
-    if (
-        event.key === "Escape" &&
-        document
-            .getElementById("modal")
-            .classList.contains("show")
-    ) {
+            searchInput.focus();
 
-        closeEditor();
+        }
 
     }
-
-});
+);
 
 
 /* =========================
    起動
 ========================= */
 
-loadNotes();
+loadData();
+
+if (!selectedNoteId) {
+
+    if (notes.length > 0) {
+
+        selectedNoteId =
+            [...notes]
+                .sort(
+                    (a, b) =>
+                        b.updated - a.updated
+                )[0].id;
+
+    }
+
+}
+
+
+if (!selectedNoteId) {
+
+    createInitialNote();
+
+}
+
+
+renderAll();
+
+
+/* =========================
+   ヘッダーの日付
+========================= */
+
+function updateHeaderDate() {
+
+    const now =
+        new Date();
+
+    document
+        .getElementById("currentDate")
+        .textContent =
+        `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+
+}
+
+updateHeaderDate();
 
 </script>
 
