@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,20 +13,30 @@
 
 html,
 body {
-    margin: 0;
     width: 100%;
     height: 100%;
-    font-family:
-        "Segoe UI",
-        "Yu Gothic",
-        "Meiryo",
-        sans-serif;
-    color: #222;
-    background: #f4f4f4;
+    margin: 0;
 }
 
 body {
     overflow: hidden;
+    background: #ffffff;
+    color: #000000;
+    font-family:
+        "Yu Gothic UI",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    color: #000000;
 }
 
 /* =========================
@@ -37,94 +48,63 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: #ffffff;
 }
 
 /* =========================
-   HEADER
+   TOP BAR
 ========================= */
 
-.header {
-    height: 54px;
+.topbar {
+    height: 52px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 0 18px;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
+    padding: 0 16px;
+    border-bottom: 1px solid #d8d8d8;
+    background: #ffffff;
 }
 
 .logo {
-    font-size: 19px;
+    font-size: 17px;
     font-weight: 700;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
 }
 
-.file-name {
+.current-name {
     margin-left: 24px;
-    color: #555;
+    min-width: 0;
+    max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: 13px;
+    color: #333333;
 }
 
-.header-actions {
+.top-actions {
     margin-left: auto;
     display: flex;
+    align-items: center;
     gap: 6px;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-button {
-    font-family: inherit;
 }
 
 .top-button {
     height: 32px;
-    padding: 0 11px;
-    border: 1px solid #d4d4d4;
-    border-radius: 5px;
-    background: #fff;
-    color: #333;
+    padding: 0 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background: #ffffff;
     cursor: pointer;
     font-size: 12px;
 }
 
 .top-button:hover {
-    background: #f3f3f3;
+    background: #f2f2f2;
 }
 
 .top-button:active {
-    background: #e9e9e9;
-}
-
-/* =========================
-   MENU
-========================= */
-
-.menu-bar {
-    height: 38px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    padding-left: 12px;
-    border-bottom: 1px solid #ddd;
-    background: #fafafa;
-}
-
-.menu-button {
-    height: 30px;
-    padding: 0 10px;
-    border: 0;
-    background: transparent;
-    color: #333;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.menu-button:hover {
-    background: #e8e8e8;
+    background: #e7e7e7;
 }
 
 /* =========================
@@ -132,76 +112,121 @@ button {
 ========================= */
 
 .toolbar {
-    height: 44px;
+    height: 46px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     padding: 0 12px;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
+    border-bottom: 1px solid #d8d8d8;
+    background: #fafafa;
 }
 
-.tool-button {
-    width: 32px;
-    height: 30px;
+.tool {
+    width: 34px;
+    height: 32px;
     border: 1px solid transparent;
     border-radius: 4px;
     background: transparent;
-    color: #333;
     cursor: pointer;
-    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
 }
 
-.tool-button:hover {
-    background: #eee;
-    border-color: #ddd;
+.tool:hover {
+    background: #e8e8e8;
+    border-color: #d5d5d5;
 }
 
-.tool-button.active {
-    background: #ddd;
-    border-color: #ccc;
+.tool.active {
+    background: #dcdcdc;
+    border-color: #c7c7c7;
 }
 
-.toolbar-separator {
+.tool-bold {
+    font-weight: 700;
+}
+
+.tool-italic {
+    font-style: italic;
+}
+
+.tool-underline {
+    text-decoration: underline;
+}
+
+.separator {
     width: 1px;
-    height: 23px;
-    background: #ddd;
+    height: 25px;
     margin: 0 5px;
+    background: #d5d5d5;
+}
+
+.select {
+    height: 32px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #000000;
+    padding: 0 7px;
+    outline: none;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 .font-select {
-    height: 30px;
-    border: 1px solid #d2d2d2;
-    border-radius: 4px;
-    background: #fff;
-    padding: 0 7px;
-    color: #333;
-    font-size: 12px;
-    outline: none;
+    width: 150px;
+}
+
+.size-select {
+    width: 75px;
+}
+
+/* =========================
+   COLOR
+========================= */
+
+.color-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .color-button {
-    width: 32px;
-    height: 30px;
-    padding: 3px;
+    width: 34px;
+    height: 32px;
     border: 1px solid transparent;
     border-radius: 4px;
     background: transparent;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .color-button:hover {
-    background: #eee;
-    border-color: #ddd;
+    background: #e8e8e8;
+    border-color: #d5d5d5;
 }
 
-.color-preview {
+.color-icon {
+    width: 21px;
+    height: 21px;
+    border: 1px solid #999999;
     display: block;
-    width: 22px;
-    height: 22px;
-    border: 1px solid #aaa;
-    background: #222;
+    background: #000000;
+}
+
+.color-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34px;
+    height: 32px;
+    opacity: 0;
+    cursor: pointer;
 }
 
 /* =========================
@@ -219,128 +244,134 @@ button {
 ========================= */
 
 .sidebar {
-    width: 245px;
+    width: 270px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #ddd;
-    background: #f8f8f8;
+    border-right: 1px solid #d8d8d8;
+    background: #f7f7f7;
 }
 
-.sidebar-header {
-    height: 46px;
+.sidebar-top {
+    height: 48px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding: 0 14px;
-    border-bottom: 1px solid #ddd;
+    padding: 0 13px;
+    border-bottom: 1px solid #dddddd;
 }
 
 .sidebar-title {
     font-size: 12px;
-    font-weight: 600;
-    color: #555;
+    font-weight: 700;
 }
 
-.new-note {
+.new-button {
     margin-left: auto;
-    width: 28px;
-    height: 28px;
-    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #cfcfcf;
     border-radius: 4px;
-    background: #fff;
+    background: #ffffff;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1;
 }
 
-.new-note:hover {
-    background: #eee;
+.new-button:hover {
+    background: #ededed;
 }
 
-.search-box {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.search {
+    height: 45px;
+    padding: 7px 10px;
+    border-bottom: 1px solid #dddddd;
 }
 
-.search-input {
+.search input {
     width: 100%;
-    height: 32px;
+    height: 30px;
     padding: 0 9px;
-    border: 1px solid #d2d2d2;
+    border: 1px solid #cfcfcf;
     border-radius: 4px;
-    background: #fff;
     outline: none;
+    background: #ffffff;
+    color: #000000;
     font-size: 12px;
 }
 
-.search-input:focus {
-    border-color: #999;
+.search input:focus {
+    border-color: #777777;
 }
 
-.notes-list {
+.notes {
     flex: 1;
     overflow-y: auto;
 }
 
-.note-item {
+.note {
     position: relative;
     padding: 11px 13px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e2e2e2;
     cursor: pointer;
-    background: #f8f8f8;
+    background: #f7f7f7;
 }
 
-.note-item:hover {
-    background: #eee;
+.note:hover {
+    background: #eeeeee;
 }
 
-.note-item.active {
-    background: #e2e2e2;
+.note.active {
+    background: #dddddd;
 }
 
-.note-item-title {
+.note-title {
+    padding-right: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-size: 13px;
-    font-weight: 600;
-    color: #333;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 700;
+    color: #000000;
 }
 
-.note-item-preview {
+.note-preview {
     margin-top: 5px;
-    color: #777;
-    font-size: 11px;
-    white-space: nowrap;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 11px;
+    color: #555555;
 }
 
-.note-item-date {
+.note-date {
     margin-top: 6px;
-    color: #999;
     font-size: 10px;
+    color: #777777;
 }
 
-.note-delete {
+.delete-note {
     position: absolute;
     top: 9px;
     right: 8px;
-    display: none;
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     border: 0;
+    border-radius: 4px;
     background: transparent;
-    color: #777;
+    color: #555555;
     cursor: pointer;
+    display: none;
+    font-size: 15px;
 }
 
-.note-item:hover .note-delete {
+.note:hover .delete-note {
     display: block;
 }
 
-.note-delete:hover {
-    color: #c00;
+.delete-note:hover {
+    background: #d6d6d6;
+    color: #000000;
 }
 
 /* =========================
@@ -352,62 +383,102 @@ button {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: #ffffff;
 }
 
-.editor-title {
+.title-input {
     width: 100%;
-    height: 56px;
+    height: 60px;
     flex-shrink: 0;
-    padding: 16px 25px 8px;
+    padding: 16px 34px 8px;
     border: 0;
-    outline: none;
-    font-size: 20px;
-    font-weight: 600;
-    color: #222;
+    outline: 0;
+    background: #ffffff;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-.editor-title::placeholder {
-    color: #aaa;
+.title-input::placeholder {
+    color: #888888;
 }
 
 .editor {
     flex: 1;
-    width: 100%;
     min-height: 0;
-    resize: none;
-    padding: 10px 25px 30px;
-    border: 0;
+    overflow-y: auto;
+    padding: 6px 34px 50px;
     outline: none;
-    background: #fff;
-    color: #222;
+    color: #000000;
+    background: #ffffff;
     font-family:
+        "Yu Gothic UI",
         "Yu Gothic",
         "Meiryo",
         sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.9;
+    word-break: break-word;
+}
+
+.editor:empty::before {
+    content: attr(data-placeholder);
+    color: #999999;
+    pointer-events: none;
+}
+
+.editor:focus:empty::before {
+    color: #aaaaaa;
+}
+
+.editor p {
+    margin: 0 0 8px 0;
+}
+
+.editor h1,
+.editor h2,
+.editor h3 {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: #000000;
+}
+
+.editor h1 {
+    font-size: 26px;
+}
+
+.editor h2 {
+    font-size: 21px;
+}
+
+.editor h3 {
+    font-size: 18px;
+}
+
+.editor ul,
+.editor ol {
+    padding-left: 28px;
 }
 
 /* =========================
-   STATUS BAR
+   STATUS
 ========================= */
 
-.status-bar {
+.status {
     height: 30px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     padding: 0 14px;
-    border-top: 1px solid #ddd;
-    background: #f7f7f7;
-    color: #777;
+    border-top: 1px solid #d8d8d8;
+    background: #f5f5f5;
+    color: #555555;
     font-size: 10px;
 }
 
 .status-left {
     display: flex;
-    gap: 18px;
+    gap: 16px;
 }
 
 .status-right {
@@ -415,67 +486,77 @@ button {
 }
 
 /* =========================
-   EMPTY
+   CONTEXT MESSAGE
 ========================= */
 
-.empty {
+.no-note {
     flex: 1;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    color: #999;
+    color: #777777;
     font-size: 13px;
 }
 
 /* =========================
-   COLOR INPUT
+   SCROLLBAR
 ========================= */
 
-.hidden-color {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f4f4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
 
     .sidebar {
-        width: 190px;
+        width: 220px;
     }
 
-    .file-name {
+    .current-name {
         display: none;
     }
 
-    .editor-title {
-        padding-left: 15px;
-    }
-
     .editor {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-}
-
-@media (max-width: 550px) {
-
-    .sidebar {
-        width: 150px;
+    .title-input {
+        padding-left: 20px;
     }
 
     .toolbar {
         overflow-x: auto;
     }
 
-    .status-left {
-        gap: 8px;
+}
+
+@media (max-width: 580px) {
+
+    .sidebar {
+        width: 185px;
+    }
+
+    .font-select {
+        width: 120px;
     }
 
 }
@@ -486,35 +567,37 @@ button {
 
 <div class="app">
 
-    <!-- HEADER -->
+    <!-- =========================
+         TOP BAR
+    ========================= -->
 
-    <header class="header">
+    <header class="topbar">
 
         <div class="logo">
             DOL NOTE
         </div>
 
         <div
-            class="file-name"
-            id="headerFileName"
+            class="current-name"
+            id="currentName"
         >
             無題
         </div>
 
-        <div class="header-actions">
+        <div class="top-actions">
 
             <button
                 class="top-button"
-                onclick="newNote()"
+                onclick="createNote()"
             >
                 新規
             </button>
 
             <button
                 class="top-button"
-                onclick="downloadTxt()"
+                onclick="downloadCurrentNote()"
             >
-                保存
+                TXT保存
             </button>
 
         </div>
@@ -522,127 +605,161 @@ button {
     </header>
 
 
-    <!-- MENU -->
-
-    <nav class="menu-bar">
-
-        <button
-            class="menu-button"
-            onclick="newNote()"
-        >
-            ファイル
-        </button>
-
-        <button
-            class="menu-button"
-            onclick="undoEdit()"
-        >
-            編集
-        </button>
-
-        <button
-            class="menu-button"
-            onclick="focusEditor()"
-        >
-            表示
-        </button>
-
-    </nav>
-
-
-    <!-- TOOLBAR -->
+    <!-- =========================
+         TOOLBAR
+    ========================= -->
 
     <div class="toolbar">
 
         <button
-            class="tool-button"
-            title="太字"
-            onclick="formatText('bold')"
+            class="tool tool-bold"
+            id="boldButton"
+            title="太字 Ctrl+B"
+            onclick="execFormat('bold')"
         >
-            <b>B</b>
+            B
         </button>
 
         <button
-            class="tool-button"
-            title="斜体"
-            onclick="formatText('italic')"
+            class="tool tool-italic"
+            id="italicButton"
+            title="斜体 Ctrl+I"
+            onclick="execFormat('italic')"
         >
-            <i>I</i>
+            I
         </button>
 
         <button
-            class="tool-button"
-            title="下線"
-            onclick="formatText('underline')"
+            class="tool tool-underline"
+            id="underlineButton"
+            title="下線 Ctrl+U"
+            onclick="execFormat('underline')"
         >
-            <u>U</u>
+            U
         </button>
 
-        <div class="toolbar-separator"></div>
+        <div class="separator"></div>
 
         <select
-            class="font-select"
-            id="fontSize"
-            onchange="changeFontSize()"
+            class="select font-select"
+            id="fontSelect"
+            onchange="changeFont()"
+            title="フォント"
         >
-            <option value="14">14px</option>
-            <option value="16">16px</option>
-            <option value="18">18px</option>
-            <option value="20">20px</option>
-            <option value="24">24px</option>
-            <option value="28">28px</option>
+            <option value='"Yu Gothic UI","Yu Gothic","Meiryo",sans-serif'>
+                Yu Gothic
+            </option>
+
+            <option value='"Meiryo",sans-serif'>
+                Meiryo
+            </option>
+
+            <option value='"Segoe UI",sans-serif'>
+                Segoe UI
+            </option>
+
+            <option value='Arial,sans-serif'>
+                Arial
+            </option>
+
+            <option value='Consolas,monospace'>
+                Consolas
+            </option>
+
+            <option value='"MS Gothic",monospace'>
+                MS Gothic
+            </option>
         </select>
 
-        <div class="toolbar-separator"></div>
+        <select
+            class="select size-select"
+            id="sizeSelect"
+            onchange="changeSize()"
+            title="文字サイズ"
+        >
+            <option value="1">12</option>
+            <option value="2">14</option>
+            <option value="3" selected>16</option>
+            <option value="4">18</option>
+            <option value="5">20</option>
+            <option value="6">24</option>
+            <option value="7">28</option>
+        </select>
+
+        <div class="separator"></div>
 
         <button
-            class="tool-button"
-            onclick="insertText('・')"
-            title="箇条書き"
+            class="tool"
+            title="元に戻す Ctrl+Z"
+            onclick="execFormat('undo')"
         >
-            •
+            ↶
         </button>
 
         <button
-            class="tool-button"
-            onclick="insertText('→ ')"
-            title="矢印"
+            class="tool"
+            title="やり直す Ctrl+Y"
+            onclick="execFormat('redo')"
         >
-            →
+            ↷
+        </button>
+
+        <div class="separator"></div>
+
+        <button
+            class="tool"
+            title="左揃え"
+            onclick="execFormat('justifyLeft')"
+        >
+            ≡
         </button>
 
         <button
-            class="tool-button"
-            onclick="insertText('【】')"
-            title="括弧"
+            class="tool"
+            title="中央揃え"
+            onclick="execFormat('justifyCenter')"
         >
-            【】
+            ≡
         </button>
 
-        <div class="toolbar-separator"></div>
-
-        <label
-            class="color-button"
-            title="文字色"
+        <button
+            class="tool"
+            title="右揃え"
+            onclick="execFormat('justifyRight')"
         >
-            <span
-                class="color-preview"
-                id="colorPreview"
-            ></span>
+            ≡
+        </button>
+
+        <div class="separator"></div>
+
+        <div class="color-wrapper">
+
+            <button
+                class="color-button"
+                title="文字色"
+            >
+                <span
+                    class="color-icon"
+                    id="colorIcon"
+                ></span>
+            </button>
 
             <input
-                class="hidden-color"
+                class="color-input"
+                id="colorInput"
                 type="color"
-                id="textColor"
-                value="#222222"
-                onchange="changeTextColor()"
+                value="#000000"
+                title="文字色"
             >
-        </label>
+
+        </div>
 
     </div>
 
 
-    <!-- MAIN -->
+    <!-- =========================
+         MAIN
+    ========================= -->
 
     <main class="main">
 
@@ -650,15 +767,15 @@ button {
 
         <aside class="sidebar">
 
-            <div class="sidebar-header">
+            <div class="sidebar-top">
 
                 <div class="sidebar-title">
                     ノート
                 </div>
 
                 <button
-                    class="new-note"
-                    onclick="newNote()"
+                    class="new-button"
+                    onclick="createNote()"
                     title="新しいノート"
                 >
                     +
@@ -666,10 +783,10 @@ button {
 
             </div>
 
-            <div class="search-box">
+
+            <div class="search">
 
                 <input
-                    class="search-input"
                     id="searchInput"
                     type="text"
                     placeholder="ノートを検索"
@@ -678,9 +795,10 @@ button {
 
             </div>
 
+
             <div
-                class="notes-list"
-                id="notesList"
+                class="notes"
+                id="notes"
             ></div>
 
         </aside>
@@ -693,26 +811,26 @@ button {
             <div id="editorContainer">
 
                 <input
-                    class="editor-title"
-                    id="noteTitle"
+                    class="title-input"
+                    id="titleInput"
                     type="text"
                     placeholder="タイトル"
                     autocomplete="off"
                 >
 
-                <textarea
+                <div
                     class="editor"
                     id="editor"
-                    placeholder="ここに入力..."
-                    spellcheck="false"
-                ></textarea>
+                    contenteditable="true"
+                    spellcheck="true"
+                    data-placeholder="ここに入力..."
+                ></div>
 
             </div>
 
             <div
-                class="empty"
-                id="emptyMessage"
-                style="display:none;"
+                class="no-note"
+                id="noNote"
             >
                 ノートを選択してください
             </div>
@@ -724,7 +842,7 @@ button {
 
     <!-- STATUS -->
 
-    <footer class="status-bar">
+    <footer class="status">
 
         <div class="status-left">
 
@@ -736,7 +854,7 @@ button {
                 1行
             </span>
 
-            <span id="saveStatus">
+            <span id="saveState">
                 保存済み
             </span>
 
@@ -754,58 +872,84 @@ button {
 <script>
 
 /* =========================
-   DATA
+   STORAGE
 ========================= */
 
-const STORAGE_KEY = "dol_note_data";
+const STORAGE_KEY =
+    "dol_note_v2";
+
 
 let notes = [];
-let currentNoteId = null;
+
+let currentNoteId =
+    null;
+
+let savedSelection =
+    null;
 
 
 /* =========================
    ELEMENTS
 ========================= */
 
-const noteTitle =
-    document.getElementById("noteTitle");
+const titleInput =
+    document.getElementById(
+        "titleInput"
+    );
 
 const editor =
-    document.getElementById("editor");
+    document.getElementById(
+        "editor"
+    );
 
-const notesList =
-    document.getElementById("notesList");
+const notesElement =
+    document.getElementById(
+        "notes"
+    );
 
 const searchInput =
-    document.getElementById("searchInput");
+    document.getElementById(
+        "searchInput"
+    );
 
-const headerFileName =
-    document.getElementById("headerFileName");
+const currentName =
+    document.getElementById(
+        "currentName"
+    );
 
 const charCount =
-    document.getElementById("charCount");
+    document.getElementById(
+        "charCount"
+    );
 
 const lineCount =
-    document.getElementById("lineCount");
+    document.getElementById(
+        "lineCount"
+    );
 
-const saveStatus =
-    document.getElementById("saveStatus");
+const saveState =
+    document.getElementById(
+        "saveState"
+    );
 
 
 /* =========================
    LOAD
 ========================= */
 
-function loadNotes() {
+function loadData() {
 
-    const saved =
-        localStorage.getItem(STORAGE_KEY);
+    const data =
+        localStorage.getItem(
+            STORAGE_KEY
+        );
 
-    if (saved) {
+    if (data) {
 
         try {
 
-            notes = JSON.parse(saved);
+            notes =
+                JSON.parse(data);
 
         } catch {
 
@@ -819,68 +963,74 @@ function loadNotes() {
         notes = [];
     }
 
-    renderNotes();
+    if (notes.length === 0) {
 
-    if (notes.length > 0) {
-
-        openNote(notes[0].id);
+        createNote();
 
     } else {
 
-        newNote();
+        openNote(
+            notes[0].id
+        );
 
     }
+
 }
 
 
 /* =========================
-   SAVE
+   SAVE DATA
 ========================= */
 
-function saveNotes() {
+function saveData() {
 
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(notes)
     );
 
-    saveStatus.textContent =
+    saveState.textContent =
         "保存済み";
+
 }
 
 
 /* =========================
-   NEW NOTE
+   CREATE NOTE
 ========================= */
 
-function newNote() {
+function createNote() {
 
-    const now = Date.now();
+    const id =
+        Date.now();
 
-    const newNoteData = {
+    const note = {
 
-        id: now,
+        id: id,
 
         title: "無題",
 
         content: "",
 
-        updated: now
+        updated:
+            Date.now()
 
     };
 
-    notes.unshift(newNoteData);
+    notes.unshift(
+        note
+    );
 
     currentNoteId =
-        newNoteData.id;
+        id;
 
-    saveNotes();
+    saveData();
 
     renderNotes();
 
     loadCurrentNote();
 
-    noteTitle.focus();
+    titleInput.focus();
 
 }
 
@@ -891,16 +1041,18 @@ function newNote() {
 
 function openNote(id) {
 
-    const found =
+    const note =
         notes.find(
-            note => note.id === id
+            item =>
+                item.id === id
         );
 
-    if (!found) {
+    if (!note) {
         return;
     }
 
-    currentNoteId = id;
+    currentNoteId =
+        id;
 
     loadCurrentNote();
 
@@ -910,25 +1062,28 @@ function openNote(id) {
 
 
 /* =========================
-   LOAD CURRENT
+   LOAD CURRENT NOTE
 ========================= */
 
 function loadCurrentNote() {
 
     const note =
         notes.find(
-            item => item.id === currentNoteId
+            item =>
+                item.id === currentNoteId
         );
 
     if (!note) {
 
         document.getElementById(
             "editorContainer"
-        ).style.display = "none";
+        ).style.display =
+            "none";
 
         document.getElementById(
-            "emptyMessage"
-        ).style.display = "flex";
+            "noNote"
+        ).style.display =
+            "flex";
 
         return;
 
@@ -936,20 +1091,41 @@ function loadCurrentNote() {
 
     document.getElementById(
         "editorContainer"
-    ).style.display = "block";
+    ).style.display =
+        "flex";
 
     document.getElementById(
-        "emptyMessage"
-    ).style.display = "none";
+        "editorContainer"
+    ).style.flexDirection =
+        "column";
 
-    noteTitle.value =
-        note.title;
+    document.getElementById(
+        "editorContainer"
+    ).style.flex =
+        "1";
 
-    editor.value =
-        note.content;
+    document.getElementById(
+        "editorContainer"
+    ).style.minHeight =
+        "0";
 
-    headerFileName.textContent =
+    document.getElementById(
+        "noNote"
+    ).style.display =
+        "none";
+
+
+    titleInput.value =
         note.title || "無題";
+
+
+    editor.innerHTML =
+        note.content || "";
+
+
+    currentName.textContent =
+        note.title || "無題";
+
 
     updateStats();
 
@@ -957,50 +1133,60 @@ function loadCurrentNote() {
 
 
 /* =========================
-   UPDATE NOTE
+   UPDATE CURRENT
 ========================= */
 
 function updateCurrentNote() {
 
     const note =
         notes.find(
-            item => item.id === currentNoteId
+            item =>
+                item.id === currentNoteId
         );
 
     if (!note) {
         return;
     }
 
+
     note.title =
-        noteTitle.value.trim() || "無題";
+        titleInput.value.trim()
+        || "無題";
+
 
     note.content =
-        editor.value;
+        editor.innerHTML;
+
 
     note.updated =
         Date.now();
 
-    headerFileName.textContent =
+
+    currentName.textContent =
         note.title;
 
-    saveStatus.textContent =
+
+    saveState.textContent =
         "保存中...";
+
 
     clearTimeout(
         window.saveTimer
     );
 
+
     window.saveTimer =
         setTimeout(
-            function () {
+            function() {
 
-                saveNotes();
+                saveData();
 
                 renderNotes();
 
             },
-            300
+            350
         );
+
 
     updateStats();
 
@@ -1014,43 +1200,58 @@ function updateCurrentNote() {
 function renderNotes() {
 
     const keyword =
-        searchInput
-            ? searchInput.value
-                .trim()
-                .toLowerCase()
-            : "";
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
-    notesList.innerHTML = "";
+
+    notesElement.innerHTML =
+        "";
+
 
     const filtered =
         notes.filter(
             note => {
 
                 const title =
-                    note.title.toLowerCase();
+                    note.title
+                        .toLowerCase();
 
-                const content =
-                    note.content.toLowerCase();
+                const text =
+                    stripHTML(
+                        note.content
+                    )
+                    .toLowerCase();
 
                 return (
-                    title.includes(keyword) ||
-                    content.includes(keyword)
+                    title.includes(
+                        keyword
+                    )
+                    ||
+                    text.includes(
+                        keyword
+                    )
                 );
 
             }
         );
 
+
     filtered.forEach(
         function(note) {
 
             const item =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             item.className =
-                "note-item";
+                "note";
+
 
             if (
-                note.id === currentNoteId
+                note.id ===
+                currentNoteId
             ) {
 
                 item.classList.add(
@@ -1059,45 +1260,65 @@ function renderNotes() {
 
             }
 
+
             const title =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             title.className =
-                "note-item-title";
+                "note-title";
 
             title.textContent =
-                note.title || "無題";
+                note.title ||
+                "無題";
 
 
             const preview =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             preview.className =
-                "note-item-preview";
+                "note-preview";
 
             preview.textContent =
-                note.content
-                    .replace(/\n/g, " ")
-                    .slice(0, 55)
-                    ||
+                stripHTML(
+                    note.content
+                )
+                .replace(
+                    /\s+/g,
+                    " "
+                )
+                .slice(
+                    0,
+                    65
+                )
+                ||
                 "内容なし";
 
 
             const date =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
             date.className =
-                "note-item-date";
+                "note-date";
 
             date.textContent =
-                formatDate(note.updated);
+                formatDate(
+                    note.updated
+                );
 
 
             const deleteButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
             deleteButton.className =
-                "note-delete";
+                "delete-note";
 
             deleteButton.textContent =
                 "×";
@@ -1111,26 +1332,43 @@ function renderNotes() {
 
                     event.stopPropagation();
 
-                    deleteNote(note.id);
+                    deleteNote(
+                        note.id
+                    );
 
                 };
 
 
-            item.appendChild(title);
-            item.appendChild(preview);
-            item.appendChild(date);
-            item.appendChild(deleteButton);
+            item.appendChild(
+                title
+            );
+
+            item.appendChild(
+                preview
+            );
+
+            item.appendChild(
+                date
+            );
+
+            item.appendChild(
+                deleteButton
+            );
 
 
             item.onclick =
                 function() {
 
-                    openNote(note.id);
+                    openNote(
+                        note.id
+                    );
 
                 };
 
 
-            notesList.appendChild(item);
+            notesElement.appendChild(
+                item
+            );
 
         }
     );
@@ -1144,32 +1382,42 @@ function renderNotes() {
 
 function deleteNote(id) {
 
-    const target =
+    const note =
         notes.find(
-            note => note.id === id
+            item =>
+                item.id === id
         );
 
-    if (!target) {
+    if (!note) {
         return;
     }
 
+
     const confirmed =
         confirm(
-            `「${target.title}」を削除しますか？`
+            `「${note.title}」を削除しますか？`
         );
+
 
     if (!confirmed) {
         return;
     }
 
+
     notes =
         notes.filter(
-            note => note.id !== id
+            item =>
+                item.id !== id
         );
 
-    if (currentNoteId === id) {
 
-        if (notes.length > 0) {
+    if (
+        currentNoteId === id
+    ) {
+
+        if (
+            notes.length > 0
+        ) {
 
             currentNoteId =
                 notes[0].id;
@@ -1181,15 +1429,279 @@ function deleteNote(id) {
             currentNoteId =
                 null;
 
-            newNote();
+            createNote();
 
         }
 
     }
 
-    saveNotes();
+
+    saveData();
 
     renderNotes();
+
+}
+
+
+/* =========================
+   FORMAT
+========================= */
+
+function execFormat(command) {
+
+    editor.focus();
+
+    document.execCommand(
+        command,
+        false,
+        null
+    );
+
+    updateToolbarState();
+
+    updateCurrentNote();
+
+}
+
+
+/* =========================
+   FONT
+========================= */
+
+function changeFont() {
+
+    const value =
+        document.getElementById(
+            "fontSelect"
+        ).value;
+
+
+    editor.focus();
+
+
+    document.execCommand(
+        "fontName",
+        false,
+        value
+    );
+
+
+    updateCurrentNote();
+
+}
+
+
+/* =========================
+   SIZE
+========================= */
+
+function changeSize() {
+
+    const value =
+        document.getElementById(
+            "sizeSelect"
+        ).value;
+
+
+    editor.focus();
+
+
+    document.execCommand(
+        "fontSize",
+        false,
+        value
+    );
+
+
+    updateCurrentNote();
+
+}
+
+
+/* =========================
+   COLOR
+========================= */
+
+const colorInput =
+    document.getElementById(
+        "colorInput"
+    );
+
+const colorIcon =
+    document.getElementById(
+        "colorIcon"
+    );
+
+
+colorInput.addEventListener(
+    "input",
+    function() {
+
+        colorIcon.style.background =
+            colorInput.value;
+
+    }
+);
+
+
+colorInput.addEventListener(
+    "change",
+    function() {
+
+        editor.focus();
+
+        document.execCommand(
+            "foreColor",
+            false,
+            colorInput.value
+        );
+
+        updateCurrentNote();
+
+    }
+);
+
+
+/* =========================
+   TOOLBAR STATE
+========================= */
+
+function updateToolbarState() {
+
+    const commands = [
+        [
+            "bold",
+            "boldButton"
+        ],
+        [
+            "italic",
+            "italicButton"
+        ],
+        [
+            "underline",
+            "underlineButton"
+        ]
+    ];
+
+
+    commands.forEach(
+        function(pair) {
+
+            const command =
+                pair[0];
+
+            const id =
+                pair[1];
+
+            const button =
+                document.getElementById(
+                    id
+                );
+
+
+            try {
+
+                if (
+                    document.queryCommandState(
+                        command
+                    )
+                ) {
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                } else {
+
+                    button.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            } catch {
+
+                button.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SELECTION
+========================= */
+
+document.addEventListener(
+    "selectionchange",
+    function() {
+
+        if (
+            document.activeElement ===
+                editor ||
+            editor.contains(
+                document.activeElement
+            )
+        ) {
+
+            updateToolbarState();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   STATS
+========================= */
+
+function updateStats() {
+
+    const text =
+        editor.innerText || "";
+
+
+    charCount.textContent =
+        `${text.length}文字`;
+
+
+    const lines =
+        text.length === 0
+            ? 1
+            : text.split(
+                "\n"
+            ).length;
+
+
+    lineCount.textContent =
+        `${lines}行`;
+
+}
+
+
+/* =========================
+   STRIP HTML
+========================= */
+
+function stripHTML(html) {
+
+    const temporary =
+        document.createElement(
+            "div"
+        );
+
+    temporary.innerHTML =
+        html || "";
+
+    return (
+        temporary.innerText || ""
+    );
 
 }
 
@@ -1201,30 +1713,50 @@ function deleteNote(id) {
 function formatDate(timestamp) {
 
     const date =
-        new Date(timestamp);
+        new Date(
+            timestamp
+        );
+
 
     const year =
         date.getFullYear();
 
+
     const month =
         String(
             date.getMonth() + 1
-        ).padStart(2, "0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const day =
         String(
             date.getDate()
-        ).padStart(2, "0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const hour =
         String(
             date.getHours()
-        ).padStart(2, "0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     const minute =
         String(
             date.getMinutes()
-        ).padStart(2, "0");
+        ).padStart(
+            2,
+            "0"
+        );
+
 
     return (
         `${year}/${month}/${day} ${hour}:${minute}`
@@ -1234,263 +1766,74 @@ function formatDate(timestamp) {
 
 
 /* =========================
-   STATS
+   DOWNLOAD
 ========================= */
 
-function updateStats() {
-
-    const text =
-        editor.value;
-
-    charCount.textContent =
-        `${text.length}文字`;
-
-    const lines =
-        text.length === 0
-            ? 1
-            : text.split("\n").length;
-
-    lineCount.textContent =
-        `${lines}行`;
-
-}
-
-
-/* =========================
-   TEXT INSERT
-========================= */
-
-function insertText(text) {
-
-    const start =
-        editor.selectionStart;
-
-    const end =
-        editor.selectionEnd;
-
-    const before =
-        editor.value.substring(
-            0,
-            start
-        );
-
-    const after =
-        editor.value.substring(
-            end
-        );
-
-    editor.value =
-        before +
-        text +
-        after;
-
-    editor.focus();
-
-    const position =
-        start + text.length;
-
-    editor.selectionStart =
-        position;
-
-    editor.selectionEnd =
-        position;
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   FORMAT
-========================= */
-
-function formatText(type) {
-
-    const start =
-        editor.selectionStart;
-
-    const end =
-        editor.selectionEnd;
-
-    if (start === end) {
-        return;
-    }
-
-    const selected =
-        editor.value.substring(
-            start,
-            end
-        );
-
-    let replacement =
-        selected;
-
-
-    if (type === "bold") {
-
-        replacement =
-            `**${selected}**`;
-
-    }
-
-    if (type === "italic") {
-
-        replacement =
-            `*${selected}*`;
-
-    }
-
-    if (type === "underline") {
-
-        replacement =
-            `<u>${selected}</u>`;
-
-    }
-
-
-    editor.value =
-        editor.value.substring(
-            0,
-            start
-        ) +
-        replacement +
-        editor.value.substring(
-            end
-        );
-
-
-    editor.focus();
-
-    editor.selectionStart =
-        start;
-
-    editor.selectionEnd =
-        start + replacement.length;
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   FONT SIZE
-========================= */
-
-function changeFontSize() {
-
-    const size =
-        document.getElementById(
-            "fontSize"
-        ).value;
-
-    editor.style.fontSize =
-        `${size}px`;
-
-}
-
-
-/* =========================
-   TEXT COLOR
-========================= */
-
-function changeTextColor() {
-
-    const input =
-        document.getElementById(
-            "textColor"
-        );
-
-    const preview =
-        document.getElementById(
-            "colorPreview"
-        );
-
-    preview.style.background =
-        input.value;
-
-    /*
-       textareaでは文字の一部分だけ
-       色を変えることができないため、
-       今回はエディター全体の文字色を変更。
-    */
-
-    editor.style.color =
-        input.value;
-
-}
-
-
-/* =========================
-   UNDO
-========================= */
-
-function undoEdit() {
-
-    document.execCommand(
-        "undo"
-    );
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   FOCUS
-========================= */
-
-function focusEditor() {
-
-    editor.focus();
-
-}
-
-
-/* =========================
-   DOWNLOAD TXT
-========================= */
-
-function downloadTxt() {
+function downloadCurrentNote() {
 
     const note =
         notes.find(
-            item => item.id === currentNoteId
+            item =>
+                item.id ===
+                currentNoteId
         );
+
 
     if (!note) {
         return;
     }
 
-    const content =
-        note.content;
+
+    const text =
+        stripHTML(
+            note.content
+        );
+
 
     const blob =
         new Blob(
-            [content],
+            [text],
             {
-                type: "text/plain;charset=utf-8"
+                type:
+                    "text/plain;charset=utf-8"
             }
         );
 
+
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
+
 
     const link =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
+
 
     link.href =
         url;
 
+
     link.download =
         `${note.title || "無題"}.txt`;
 
-    document.body.appendChild(link);
+
+    document.body.appendChild(
+        link
+    );
+
 
     link.click();
 
+
     link.remove();
 
-    URL.revokeObjectURL(url);
+
+    URL.revokeObjectURL(
+        url
+    );
 
 }
 
@@ -1505,25 +1848,115 @@ document.addEventListener(
 
         if (
             event.ctrlKey &&
-            event.key.toLowerCase() === "s"
+            event.key.toLowerCase()
+                === "s"
         ) {
 
             event.preventDefault();
 
-            saveNotes();
+            saveData();
 
-            downloadTxt();
+            return;
 
         }
 
+
         if (
             event.ctrlKey &&
-            event.key.toLowerCase() === "n"
+            event.key.toLowerCase()
+                === "n"
         ) {
 
             event.preventDefault();
 
-            newNote();
+            createNote();
+
+            return;
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase()
+                === "b"
+        ) {
+
+            event.preventDefault();
+
+            execFormat(
+                "bold"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase()
+                === "i"
+        ) {
+
+            event.preventDefault();
+
+            execFormat(
+                "italic"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase()
+                === "u"
+        ) {
+
+            event.preventDefault();
+
+            execFormat(
+                "underline"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase()
+                === "z"
+        ) {
+
+            event.preventDefault();
+
+            execFormat(
+                "undo"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase()
+                === "y"
+        ) {
+
+            event.preventDefault();
+
+            execFormat(
+                "redo"
+            );
+
+            return;
 
         }
 
@@ -1535,14 +1968,33 @@ document.addEventListener(
    EVENTS
 ========================= */
 
-noteTitle.addEventListener(
+titleInput.addEventListener(
     "input",
     updateCurrentNote
 );
 
+
 editor.addEventListener(
     "input",
-    updateCurrentNote
+    function() {
+
+        updateCurrentNote();
+
+        updateToolbarState();
+
+    }
+);
+
+
+editor.addEventListener(
+    "keyup",
+    updateToolbarState
+);
+
+
+editor.addEventListener(
+    "mouseup",
+    updateToolbarState
 );
 
 
@@ -1550,9 +2002,10 @@ editor.addEventListener(
    START
 ========================= */
 
-loadNotes();
+loadData();
 
 </script>
 
 </body>
 </html>
+```
