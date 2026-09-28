@@ -39,20 +39,21 @@ button {
     color: inherit;
 }
 
-/* =========================
-   アプリ全体
-========================= */
+/* ========================================
+   アプリ
+======================================== */
 
 .app {
     width: 100%;
     height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
 
-/* =========================
+/* ========================================
    ヘッダー
-========================= */
+======================================== */
 
 .header {
     height: 58px;
@@ -65,6 +66,7 @@ button {
     padding: 0 20px;
 
     border-bottom: 1px solid #d7d7d7;
+
     background: #ffffff;
 }
 
@@ -125,9 +127,9 @@ button {
     background: #292929;
 }
 
-/* =========================
+/* ========================================
    メイン
-========================= */
+======================================== */
 
 .main {
     flex: 1;
@@ -136,12 +138,12 @@ button {
     display: flex;
 }
 
-/* =========================
+/* ========================================
    サイドバー
-========================= */
+======================================== */
 
 .sidebar {
-    width: 275px;
+    width: 285px;
     flex-shrink: 0;
 
     border-right: 1px solid #d7d7d7;
@@ -154,7 +156,9 @@ button {
     overflow: hidden;
 }
 
-/* 検索 */
+/* ========================================
+   検索
+======================================== */
 
 .search-area {
     padding: 14px 14px 12px;
@@ -165,6 +169,7 @@ button {
     height: 34px;
 
     border: 1px solid #d2d2d2;
+
     background: #ffffff;
 
     outline: none;
@@ -172,6 +177,7 @@ button {
     padding: 0 11px;
 
     font-size: 12px;
+
     color: #111111;
 }
 
@@ -183,9 +189,9 @@ button {
     color: #999999;
 }
 
-/* =========================
+/* ========================================
    カレンダー
-========================= */
+======================================== */
 
 .calendar-section {
     padding: 0 14px 14px;
@@ -194,11 +200,11 @@ button {
 }
 
 .calendar-top {
+    height: 38px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    height: 38px;
 }
 
 .month-label {
@@ -216,11 +222,13 @@ button {
     height: 27px;
 
     border: 0;
+
     background: transparent;
 
     cursor: pointer;
 
     font-size: 16px;
+
     line-height: 1;
 }
 
@@ -230,25 +238,29 @@ button {
 
 .calendar-week {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+
+    grid-template-columns:
+        repeat(7, 1fr);
 
     margin-bottom: 3px;
 }
 
 .weekday {
+    padding: 4px 0;
+
     text-align: center;
 
     font-size: 9px;
     font-weight: 800;
 
     color: #777777;
-
-    padding: 4px 0;
 }
 
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+
+    grid-template-columns:
+        repeat(7, 1fr);
 
     gap: 2px;
 }
@@ -259,11 +271,13 @@ button {
     height: 29px;
 
     border: 0;
+
     background: transparent;
 
     cursor: pointer;
 
     font-size: 11px;
+
     color: #222222;
 }
 
@@ -306,45 +320,141 @@ button {
     background: #ffffff;
 }
 
-/* =========================
-   サイド下部
-========================= */
+/* ========================================
+   左側リスト全体
+======================================== */
 
-.sidebar-bottom {
+.sidebar-content {
     flex: 1;
     min-height: 0;
 
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
 }
 
-.sidebar-title {
-    height: 40px;
+/* ========================================
+   日程メモ
+======================================== */
+
+.section {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+}
+
+.schedule-section {
+    flex: 1;
+
+    border-bottom: 1px solid #dddddd;
+}
+
+.normal-section {
+    flex: 1;
+}
+
+.section-header {
+    height: 38px;
+    flex-shrink: 0;
 
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     padding: 0 14px;
 
-    font-size: 11px;
-    font-weight: 900;
-
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e2e2e2;
 }
 
-.note-list {
+.section-title {
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.section-count {
+    font-size: 9px;
+    color: #999999;
+}
+
+.section-search {
+    flex-shrink: 0;
+
+    padding: 8px 14px;
+}
+
+.section-search input {
+    width: 100%;
+    height: 28px;
+
+    border: 1px solid #d8d8d8;
+
+    background: #ffffff;
+
+    outline: none;
+
+    padding: 0 8px;
+
+    font-size: 10px;
+}
+
+.section-search input:focus {
+    border-color: #111111;
+}
+
+.section-list {
     flex: 1;
     min-height: 0;
 
     overflow-y: auto;
 }
 
+/* ========================================
+   日程メモ項目
+======================================== */
+
+.schedule-item {
+    padding: 9px 14px;
+
+    border-bottom: 1px solid #e9e9e9;
+
+    cursor: pointer;
+}
+
+.schedule-item:hover {
+    background: #f0f0f0;
+}
+
+.schedule-item.active {
+    background: #e5e5e5;
+}
+
+.schedule-date {
+    font-size: 10px;
+    font-weight: 900;
+
+    margin-bottom: 3px;
+}
+
+.schedule-preview {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    font-size: 10px;
+    color: #777777;
+}
+
+/* ========================================
+   普通メモ項目
+======================================== */
+
 .note-item {
-    position: relative;
+    padding: 10px 14px;
 
-    padding: 11px 14px;
-
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e9e9e9;
 
     cursor: pointer;
 }
@@ -354,7 +464,7 @@ button {
 }
 
 .note-item.active {
-    background: #e7e7e7;
+    background: #e5e5e5;
 }
 
 .note-item-title {
@@ -363,10 +473,10 @@ button {
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
 
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .note-item-preview {
@@ -375,31 +485,23 @@ button {
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    color: #777777;
-
     font-size: 10px;
-}
-
-.note-item-date {
-    margin-top: 5px;
-
-    color: #999999;
-
-    font-size: 9px;
+    color: #777777;
 }
 
 .empty-list {
-    padding: 25px 14px;
+    padding: 18px 14px;
+
+    font-size: 10px;
 
     color: #999999;
 
-    font-size: 11px;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-/* =========================
+/* ========================================
    エディタ
-========================= */
+======================================== */
 
 .editor-area {
     flex: 1;
@@ -430,6 +532,7 @@ button {
 
 .editor-date {
     font-size: 11px;
+
     color: #777777;
 
     margin-bottom: 3px;
@@ -452,19 +555,20 @@ button {
 }
 
 .editor-title::placeholder {
-    color: #aaa;
+    color: #aaaaaa;
 }
 
 .editor-status {
     flex-shrink: 0;
 
     font-size: 10px;
+
     color: #999999;
 }
 
-/* =========================
+/* ========================================
    本文
-========================= */
+======================================== */
 
 .editor-body {
     flex: 1;
@@ -499,6 +603,7 @@ button {
         sans-serif;
 
     font-size: 15px;
+
     line-height: 1.9;
 }
 
@@ -506,9 +611,9 @@ button {
     color: #999999;
 }
 
-/* =========================
-   下部ステータス
-========================= */
+/* ========================================
+   ステータス
+======================================== */
 
 .statusbar {
     height: 32px;
@@ -531,12 +636,34 @@ button {
 .status-right {
     display: flex;
     align-items: center;
+
     gap: 14px;
 }
 
-/* =========================
+/* ========================================
+   スクロールバー
+======================================== */
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cfcfcf;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+/* ========================================
    モバイル
-========================= */
+======================================== */
 
 @media (max-width: 760px) {
 
@@ -562,7 +689,7 @@ button {
     }
 
     .sidebar {
-        width: 210px;
+        width: 220px;
     }
 
     .editor-top {
@@ -581,7 +708,7 @@ button {
 @media (max-width: 560px) {
 
     .sidebar {
-        width: 175px;
+        width: 180px;
     }
 
     .calendar-section {
@@ -594,10 +721,17 @@ button {
         padding-right: 8px;
     }
 
-    .sidebar-title {
+    .section-header {
         padding-left: 8px;
+        padding-right: 8px;
     }
 
+    .section-search {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .schedule-item,
     .note-item {
         padding-left: 8px;
         padding-right: 8px;
@@ -622,9 +756,9 @@ button {
 
 <div class="app">
 
-    <!-- =========================
+    <!-- =====================================
          ヘッダー
-    ========================== -->
+    ====================================== -->
 
     <header class="header">
 
@@ -636,11 +770,13 @@ button {
 
             <div class="logo-line"></div>
 
-            <div class="current-date" id="currentDate">
-                2026年9月28日
-            </div>
+            <div
+                class="current-date"
+                id="currentDate"
+            ></div>
 
         </div>
+
 
         <div class="header-actions">
 
@@ -662,7 +798,7 @@ button {
                 class="header-button primary"
                 id="newButton"
             >
-                ＋ 新しいメモ
+                ＋ 普通のメモ
             </button>
 
         </div>
@@ -670,29 +806,17 @@ button {
     </header>
 
 
-    <!-- =========================
+    <!-- =====================================
          メイン
-    ========================== -->
+    ====================================== -->
 
     <main class="main">
 
-        <!-- =====================
-             左サイド
-        ====================== -->
+        <!-- =================================
+             左
+        ================================== -->
 
         <aside class="sidebar">
-
-            <div class="search-area">
-
-                <input
-                    type="search"
-                    class="search-box"
-                    id="searchInput"
-                    placeholder="メモを検索"
-                >
-
-            </div>
-
 
             <!-- カレンダー -->
 
@@ -703,16 +827,13 @@ button {
                     <div
                         class="month-label"
                         id="monthLabel"
-                    >
-                        2026年9月
-                    </div>
+                    ></div>
 
                     <div class="month-controls">
 
                         <button
                             class="month-button"
                             id="prevMonth"
-                            title="前の月"
                         >
                             ‹
                         </button>
@@ -720,7 +841,6 @@ button {
                         <button
                             class="month-button"
                             id="nextMonth"
-                            title="次の月"
                         >
                             ›
                         </button>
@@ -751,27 +871,97 @@ button {
             </section>
 
 
-            <!-- メモ一覧 -->
+            <div class="sidebar-content">
 
-            <section class="sidebar-bottom">
+                <!-- =================================
+                     日程メモ
+                ================================== -->
 
-                <div class="sidebar-title">
-                    メモ
-                </div>
+                <section class="section schedule-section">
 
-                <div
-                    class="note-list"
-                    id="noteList"
-                ></div>
+                    <div class="section-header">
 
-            </section>
+                        <div class="section-title">
+                            日程メモ
+                        </div>
+
+                        <div
+                            class="section-count"
+                            id="scheduleCount"
+                        >
+                            0件
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-search">
+
+                        <input
+                            type="search"
+                            id="scheduleSearch"
+                            placeholder="日程メモを検索"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="section-list"
+                        id="scheduleList"
+                    ></div>
+
+                </section>
+
+
+                <!-- =================================
+                     普通のメモ
+                ================================== -->
+
+                <section class="section normal-section">
+
+                    <div class="section-header">
+
+                        <div class="section-title">
+                            普通のメモ
+                        </div>
+
+                        <div
+                            class="section-count"
+                            id="normalCount"
+                        >
+                            0件
+                        </div>
+
+                    </div>
+
+
+                    <div class="section-search">
+
+                        <input
+                            type="search"
+                            id="normalSearch"
+                            placeholder="普通のメモを検索"
+                        >
+
+                    </div>
+
+
+                    <div
+                        class="section-list"
+                        id="normalList"
+                    ></div>
+
+                </section>
+
+            </div>
 
         </aside>
 
 
-        <!-- =====================
+        <!-- =================================
              エディタ
-        ====================== -->
+        ================================== -->
 
         <section class="editor-area">
 
@@ -795,6 +985,7 @@ button {
 
                 </div>
 
+
                 <div
                     class="editor-status"
                     id="editorStatus"
@@ -810,8 +1001,8 @@ button {
                 <textarea
                     class="editor"
                     id="editor"
-                    spellcheck="true"
                     placeholder="ここにメモを書く..."
+                    spellcheck="true"
                 ></textarea>
 
             </div>
@@ -831,10 +1022,11 @@ button {
 
                 </div>
 
+
                 <div class="status-right">
 
-                    <span>
-                        自動保存
+                    <span id="typeStatus">
+                        普通のメモ
                     </span>
 
                     <span id="saveStatus">
@@ -854,220 +1046,280 @@ button {
 
 <script>
 
-/* =========================================================
+/* =====================================================
    DOL NOTE
-========================================================= */
+===================================================== */
 
-const STORAGE_KEY = "DOL_NOTE_DATA_V1";
+const STORAGE_KEY =
+    "DOL_NOTE_DATA_V2";
 
 
-/* =========================
+/* =====================================================
    状態
-========================= */
+===================================================== */
 
-let notes = [];
+let normalNotes = [];
 
-let selectedNoteId = null;
+let scheduleNotes = [];
 
-let calendarYear;
-let calendarMonth;
+let selectedId = null;
+
+let selectedType = null;
+
+/*
+    scheduleDraft は保存前の日程メモ。
+
+    カレンダーをクリックしただけでは
+    ここに一時的に作られるだけ。
+
+    文字を入力した瞬間に正式保存する。
+*/
+let scheduleDraft = null;
 
 
-/* =========================
-   今日
-========================= */
+/* カレンダー */
 
 const today = new Date();
 
-calendarYear = today.getFullYear();
-calendarMonth = today.getMonth();
+let calendarYear =
+    today.getFullYear();
+
+let calendarMonth =
+    today.getMonth();
 
 
-/* =========================
+/* =====================================================
    DOM
-========================= */
+===================================================== */
 
 const calendarGrid =
-    document.getElementById("calendarGrid");
-
-const monthLabel =
-    document.getElementById("monthLabel");
-
-const noteList =
-    document.getElementById("noteList");
-
-const titleInput =
-    document.getElementById("titleInput");
-
-const editor =
-    document.getElementById("editor");
-
-const editorDate =
-    document.getElementById("editorDate");
-
-const editorStatus =
-    document.getElementById("editorStatus");
-
-const saveStatus =
-    document.getElementById("saveStatus");
-
-const wordCount =
-    document.getElementById("wordCount");
-
-const lineCount =
-    document.getElementById("lineCount");
-
-const searchInput =
-    document.getElementById("searchInput");
-
-
-/* =========================
-   保存データ読み込み
-========================= */
-
-function loadData() {
-
-    try {
-
-        const saved =
-            localStorage.getItem(STORAGE_KEY);
-
-        if (!saved) {
-
-            notes = [];
-
-            createInitialNote();
-
-            return;
-
-        }
-
-        const data = JSON.parse(saved);
-
-        if (Array.isArray(data)) {
-            notes = data;
-        } else {
-            notes = [];
-        }
-
-    } catch {
-
-        notes = [];
-
-    }
-
-}
-
-
-/* =========================
-   データ保存
-========================= */
-
-function saveData() {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(notes)
+    document.getElementById(
+        "calendarGrid"
     );
 
-    saveStatus.textContent = "保存済み";
+const monthLabel =
+    document.getElementById(
+        "monthLabel"
+    );
 
-}
+const scheduleList =
+    document.getElementById(
+        "scheduleList"
+    );
+
+const normalList =
+    document.getElementById(
+        "normalList"
+    );
+
+const scheduleSearch =
+    document.getElementById(
+        "scheduleSearch"
+    );
+
+const normalSearch =
+    document.getElementById(
+        "normalSearch"
+    );
+
+const scheduleCount =
+    document.getElementById(
+        "scheduleCount"
+    );
+
+const normalCount =
+    document.getElementById(
+        "normalCount"
+    );
+
+const titleInput =
+    document.getElementById(
+        "titleInput"
+    );
+
+const editor =
+    document.getElementById(
+        "editor"
+    );
+
+const editorDate =
+    document.getElementById(
+        "editorDate"
+    );
+
+const editorStatus =
+    document.getElementById(
+        "editorStatus"
+    );
+
+const saveStatus =
+    document.getElementById(
+        "saveStatus"
+    );
+
+const typeStatus =
+    document.getElementById(
+        "typeStatus"
+    );
+
+const wordCount =
+    document.getElementById(
+        "wordCount"
+    );
+
+const lineCount =
+    document.getElementById(
+        "lineCount"
+    );
 
 
-/* =========================
-   初期メモ
-========================= */
-
-function createInitialNote() {
-
-    const now = new Date();
-
-    const note = {
-
-        id: createId(),
-
-        title: "",
-
-        content: "",
-
-        date: formatDateKey(now),
-
-        updated: Date.now()
-
-    };
-
-    notes.push(note);
-
-    selectedNoteId = note.id;
-
-    saveData();
-
-}
-
-
-/* =========================
+/* =====================================================
    ID
-========================= */
+===================================================== */
 
 function createId() {
 
     return (
         Date.now().toString(36) +
-        Math.random().toString(36).slice(2)
+        Math.random()
+            .toString(36)
+            .slice(2)
     );
 
 }
 
 
-/* =========================
-   日付キー
-========================= */
+/* =====================================================
+   日付
+===================================================== */
 
 function formatDateKey(date) {
 
-    const y = date.getFullYear();
+    const y =
+        date.getFullYear();
 
     const m =
-        String(date.getMonth() + 1)
-        .padStart(2, "0");
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
 
     const d =
-        String(date.getDate())
-        .padStart(2, "0");
+        String(
+            date.getDate()
+        ).padStart(2, "0");
 
     return `${y}-${m}-${d}`;
 
 }
 
 
-/* =========================
-   表示用日付
-========================= */
-
 function formatJapaneseDate(dateKey) {
 
-    const parts = dateKey.split("-");
+    const parts =
+        dateKey.split("-");
 
-    return `${Number(parts[0])}年${Number(parts[1])}月${Number(parts[2])}日`;
+    return (
+        `${Number(parts[0])}年` +
+        `${Number(parts[1])}月` +
+        `${Number(parts[2])}日`
+    );
 
 }
 
 
-/* =========================
-   今日の判定
-========================= */
+/* =====================================================
+   今日
+===================================================== */
 
 function isToday(dateKey) {
 
-    return dateKey === formatDateKey(new Date());
+    return (
+        dateKey ===
+        formatDateKey(new Date())
+    );
 
 }
 
 
-/* =========================
+/* =====================================================
+   データ読み込み
+===================================================== */
+
+function loadData() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+        if (!saved) {
+            normalNotes = [];
+            scheduleNotes = [];
+            return;
+        }
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        normalNotes =
+            Array.isArray(
+                data.normalNotes
+            )
+                ? data.normalNotes
+                : [];
+
+
+        scheduleNotes =
+            Array.isArray(
+                data.scheduleNotes
+            )
+                ? data.scheduleNotes
+                : [];
+
+
+    } catch {
+
+        normalNotes = [];
+        scheduleNotes = [];
+
+    }
+
+}
+
+
+/* =====================================================
+   データ保存
+===================================================== */
+
+function saveData() {
+
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify({
+
+            normalNotes,
+            scheduleNotes
+
+        })
+
+    );
+
+
+    saveStatus.textContent =
+        "保存済み";
+
+}
+
+
+/* =====================================================
    カレンダー描画
-========================= */
+===================================================== */
 
 function renderCalendar() {
 
@@ -1084,6 +1336,7 @@ function renderCalendar() {
             1
         );
 
+
     const lastDay =
         new Date(
             calendarYear,
@@ -1095,11 +1348,14 @@ function renderCalendar() {
     const startWeekday =
         firstDay.getDay();
 
+
     const daysInMonth =
         lastDay.getDate();
 
 
-    /* 前月 */
+    /*
+        前月
+    */
 
     const previousLastDay =
         new Date(
@@ -1115,15 +1371,17 @@ function renderCalendar() {
         i--
     ) {
 
-        const dayNumber =
+        const day =
             previousLastDay - i;
+
 
         const date =
             new Date(
                 calendarYear,
                 calendarMonth - 1,
-                dayNumber
+                day
             );
+
 
         addCalendarDay(
             date,
@@ -1133,7 +1391,9 @@ function renderCalendar() {
     }
 
 
-    /* 今月 */
+    /*
+        今月
+    */
 
     for (
         let day = 1;
@@ -1148,6 +1408,7 @@ function renderCalendar() {
                 day
             );
 
+
         addCalendarDay(
             date,
             false
@@ -1156,14 +1417,20 @@ function renderCalendar() {
     }
 
 
-    /* 次月 */
+    /*
+        次月
+    */
 
     const totalCells =
-        startWeekday + daysInMonth;
+        startWeekday +
+        daysInMonth;
+
 
     const remaining =
-        Math.ceil(totalCells / 7) * 7
-        - totalCells;
+        Math.ceil(
+            totalCells / 7
+        ) * 7 -
+        totalCells;
 
 
     for (
@@ -1179,6 +1446,7 @@ function renderCalendar() {
                 day
             );
 
+
         addCalendarDay(
             date,
             true
@@ -1189,9 +1457,9 @@ function renderCalendar() {
 }
 
 
-/* =========================
-   カレンダーの日付
-========================= */
+/* =====================================================
+   カレンダー日付
+===================================================== */
 
 function addCalendarDay(
     date,
@@ -1203,32 +1471,80 @@ function addCalendarDay(
 
 
     const button =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     button.className = "day";
 
+
     if (otherMonth) {
-        button.classList.add("other-month");
+        button.classList.add(
+            "other-month"
+        );
     }
+
 
     if (isToday(key)) {
-        button.classList.add("today");
+        button.classList.add(
+            "today"
+        );
     }
 
+
+    /*
+        その日に日程メモがあるか
+    */
+
     if (
-        notes.some(
-            note => note.date === key
+        scheduleNotes.some(
+            note =>
+                note.date === key
         )
     ) {
-        button.classList.add("has-note");
+
+        button.classList.add(
+            "has-note"
+        );
+
     }
 
+
+    /*
+        現在選択中の日付
+    */
+
+    const selectedNote =
+        getSelectedNote();
+
+
     if (
-        selectedNoteId &&
-        getSelectedNote() &&
-        getSelectedNote().date === key
+        selectedNote &&
+        selectedNote.type === "schedule" &&
+        selectedNote.date === key
     ) {
-        button.classList.add("selected");
+
+        button.classList.add(
+            "selected"
+        );
+
+    }
+
+
+    /*
+        保存前の仮日程メモ
+    */
+
+    if (
+        scheduleDraft &&
+        scheduleDraft.date === key
+    ) {
+
+        button.classList.add(
+            "selected"
+        );
+
     }
 
 
@@ -1240,58 +1556,69 @@ function addCalendarDay(
         "click",
         () => {
 
-            selectDate(key);
+            selectScheduleDate(
+                key
+            );
 
         }
     );
 
 
-    calendarGrid.appendChild(button);
+    calendarGrid.appendChild(
+        button
+    );
 
 }
 
 
-/* =========================
-   日付を選択
-========================= */
+/* =====================================================
+   日程メモをカレンダーから選択
+===================================================== */
 
-function selectDate(dateKey) {
+function selectScheduleDate(
+    dateKey
+) {
 
-    const sameDateNotes =
-        notes.filter(
-            note => note.date === dateKey
+    /*
+        今編集中の内容を処理
+    */
+
+    finalizeCurrentDraft();
+
+
+    /*
+        既存の日程メモ
+    */
+
+    const existing =
+        scheduleNotes.find(
+            note =>
+                note.date === dateKey
         );
 
 
-    if (sameDateNotes.length > 0) {
+    if (existing) {
 
-        const newest =
-            [...sameDateNotes]
-                .sort(
-                    (a, b) =>
-                        b.updated - a.updated
-                )[0];
+        openScheduleNote(
+            existing.id
+        );
 
-        openNote(newest.id);
-
-    } else {
-
-        createNoteForDate(dateKey);
+        return;
 
     }
 
-}
 
+    /*
+        新しい日程メモ。
 
-/* =========================
-   日付指定でメモ作成
-========================= */
+        ここではまだ保存しない。
+    */
 
-function createNoteForDate(dateKey) {
-
-    const note = {
+    scheduleDraft = {
 
         id: createId(),
+
+        type: "schedule",
 
         title: "",
 
@@ -1303,11 +1630,13 @@ function createNoteForDate(dateKey) {
 
     };
 
-    notes.push(note);
 
-    selectedNoteId = note.id;
+    selectedId =
+        scheduleDraft.id;
 
-    saveData();
+    selectedType =
+        "schedule";
+
 
     renderAll();
 
@@ -1316,38 +1645,152 @@ function createNoteForDate(dateKey) {
 }
 
 
-/* =========================
-   新しい普通のメモ
-========================= */
+/* =====================================================
+   仮日程メモの確定
+===================================================== */
 
-function createNewNote() {
+function finalizeCurrentDraft() {
+
+    if (!scheduleDraft) {
+        return;
+    }
+
+
+    const title =
+        scheduleDraft.title.trim();
+
+
+    const content =
+        scheduleDraft.content.trim();
+
+
+    /*
+        タイトルも本文も空
+        → 完全に破棄
+    */
+
+    if (
+        title === "" &&
+        content === ""
+    ) {
+
+        scheduleDraft = null;
+
+        return;
+
+    }
+
+
+    /*
+        内容がある
+        → 正式保存
+    */
+
+    scheduleNotes.push(
+        scheduleDraft
+    );
+
+
+    scheduleDraft = null;
+
+    saveData();
+
+}
+
+
+/* =====================================================
+   現在のメモ
+===================================================== */
+
+function getSelectedNote() {
+
+    if (
+        selectedType ===
+        "schedule"
+    ) {
+
+        if (
+            scheduleDraft &&
+            scheduleDraft.id === selectedId
+        ) {
+
+            return scheduleDraft;
+
+        }
+
+
+        return scheduleNotes.find(
+            note =>
+                note.id === selectedId
+        );
+
+    }
+
+
+    if (
+        selectedType ===
+        "normal"
+    ) {
+
+        return normalNotes.find(
+            note =>
+                note.id === selectedId
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =====================================================
+   普通のメモ作成
+===================================================== */
+
+function createNormalNote() {
+
+    /*
+        日程メモを編集中なら確定
+    */
+
+    finalizeCurrentDraft();
+
 
     const now =
         new Date();
+
 
     const note = {
 
         id: createId(),
 
+        type: "normal",
+
         title: "",
 
         content: "",
 
-        date: formatDateKey(now),
+        date:
+            formatDateKey(now),
 
         updated: Date.now()
 
     };
 
-    notes.push(note);
 
-    selectedNoteId = note.id;
+    normalNotes.unshift(
+        note
+    );
 
-    calendarYear =
-        now.getFullYear();
 
-    calendarMonth =
-        now.getMonth();
+    selectedId =
+        note.id;
+
+    selectedType =
+        "normal";
+
 
     saveData();
 
@@ -1358,33 +1801,33 @@ function createNewNote() {
 }
 
 
-/* =========================
-   メモを開く
-========================= */
+/* =====================================================
+   普通のメモを開く
+===================================================== */
 
-function openNote(id) {
+function openNormalNote(id) {
+
+    finalizeCurrentDraft();
+
 
     const note =
-        notes.find(
-            note => note.id === id
+        normalNotes.find(
+            item =>
+                item.id === id
         );
+
 
     if (!note) {
         return;
     }
 
-    selectedNoteId = id;
 
-    const date =
-        new Date(
-            note.date + "T00:00:00"
-        );
+    selectedId =
+        note.id;
 
-    calendarYear =
-        date.getFullYear();
+    selectedType =
+        "normal";
 
-    calendarMonth =
-        date.getMonth();
 
     renderAll();
 
@@ -1393,80 +1836,190 @@ function openNote(id) {
 }
 
 
-/* =========================
-   選択中メモ
-========================= */
+/* =====================================================
+   日程メモを開く
+===================================================== */
 
-function getSelectedNote() {
+function openScheduleNote(id) {
 
-    return notes.find(
-        note => note.id === selectedNoteId
-    );
+    finalizeCurrentDraft();
+
+
+    const note =
+        scheduleNotes.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!note) {
+        return;
+    }
+
+
+    selectedId =
+        note.id;
+
+    selectedType =
+        "schedule";
+
+
+    const date =
+        new Date(
+            note.date +
+            "T00:00:00"
+        );
+
+
+    calendarYear =
+        date.getFullYear();
+
+    calendarMonth =
+        date.getMonth();
+
+
+    renderAll();
+
+    editor.focus();
 
 }
 
 
-/* =========================
-   エディタ表示
-========================= */
+/* =====================================================
+   エディタへ読み込み
+===================================================== */
 
 function loadEditor() {
 
     const note =
         getSelectedNote();
 
+
     if (!note) {
+
+        titleInput.value = "";
+        editor.value = "";
+
+        editorDate.textContent =
+            "メモ";
+
+        typeStatus.textContent =
+            "メモ";
+
+        updateStats();
+
         return;
+
     }
+
 
     titleInput.value =
         note.title || "";
 
+
     editor.value =
         note.content || "";
 
-    editorDate.textContent =
-        formatJapaneseDate(
-            note.date
-        );
+
+    if (
+        note.type ===
+        "schedule"
+    ) {
+
+        editorDate.textContent =
+            formatJapaneseDate(
+                note.date
+            );
+
+
+        typeStatus.textContent =
+            "日程メモ";
+
+    } else {
+
+        editorDate.textContent =
+            "普通のメモ";
+
+
+        typeStatus.textContent =
+            "普通のメモ";
+
+    }
+
 
     updateStats();
 
 }
 
 
-/* =========================
-   入力変更
-========================= */
+/* =====================================================
+   現在の内容を更新
+===================================================== */
 
 function updateCurrentNote() {
 
     const note =
         getSelectedNote();
 
+
     if (!note) {
         return;
     }
 
+
     note.title =
         titleInput.value;
+
 
     note.content =
         editor.value;
 
+
     note.updated =
         Date.now();
+
+
+    /*
+        日程メモの場合
+        最初の1文字で正式保存
+    */
+
+    if (
+        note.type === "schedule" &&
+        scheduleDraft &&
+        scheduleDraft.id === note.id
+    ) {
+
+        if (
+            note.title.trim() !== "" ||
+            note.content.trim() !== ""
+        ) {
+
+            scheduleNotes.push(
+                scheduleDraft
+            );
+
+            scheduleDraft = null;
+
+        }
+
+    }
+
 
     saveStatus.textContent =
         "保存中...";
 
-    saveData();
 
-    renderNoteList();
+    saveData();
 
     renderCalendar();
 
+    renderScheduleList();
+
+    renderNormalList();
+
     updateStats();
+
 
     setTimeout(
         () => {
@@ -1475,28 +2028,31 @@ function updateCurrentNote() {
                 "保存済み";
 
         },
-        300
+        250
     );
 
 }
 
 
-/* =========================
+/* =====================================================
    統計
-========================= */
+===================================================== */
 
 function updateStats() {
 
     const text =
         editor.value;
 
+
     wordCount.textContent =
         `${text.length}文字`;
+
 
     const lines =
         text.length === 0
             ? 1
             : text.split("\n").length;
+
 
     lineCount.textContent =
         `${lines}行`;
@@ -1504,50 +2060,80 @@ function updateStats() {
 }
 
 
-/* =========================
-   メモ一覧
-========================= */
+/* =====================================================
+   日程メモ一覧
+===================================================== */
 
-function renderNoteList() {
+function renderScheduleList() {
 
     const keyword =
-        searchInput.value
+        scheduleSearch.value
             .trim()
             .toLowerCase();
 
 
-    let filtered =
-        [...notes];
+    let list =
+        [...scheduleNotes];
 
 
     if (keyword) {
 
-        filtered =
-            filtered.filter(note => {
+        list =
+            list.filter(
+                note => {
 
-                const target =
-                    `${note.title} ${note.content}`
-                        .toLowerCase();
+                    const target =
+                        (
+                            note.title +
+                            " " +
+                            note.content +
+                            " " +
+                            note.date
+                        ).toLowerCase();
 
-                return target.includes(keyword);
 
-            });
+                    return target.includes(
+                        keyword
+                    );
+
+                }
+            );
 
     }
 
 
-    filtered.sort(
-        (a, b) =>
-            b.updated - a.updated
+    list.sort(
+        (a, b) => {
+
+            if (
+                a.date !== b.date
+            ) {
+
+                return b.date.localeCompare(
+                    a.date
+                );
+
+            }
+
+            return (
+                b.updated -
+                a.updated
+            );
+
+        }
     );
 
 
-    if (filtered.length === 0) {
+    scheduleCount.textContent =
+        `${list.length}件`;
 
-        noteList.innerHTML = `
+
+    if (list.length === 0) {
+
+        scheduleList.innerHTML = `
 
             <div class="empty-list">
-                メモがありません。
+                日程メモはありません。
             </div>
 
         `;
@@ -1557,42 +2143,44 @@ function renderNoteList() {
     }
 
 
-    noteList.innerHTML =
-        filtered.map(note => {
-
-            const title =
-                note.title.trim()
-                    || "タイトルなし";
-
+    scheduleList.innerHTML =
+        list.map(note => {
 
             const preview =
                 note.content
-                    .replace(/\n/g, " ")
+                    .replace(
+                        /\n/g,
+                        " "
+                    )
                     .trim()
-                    || "本文なし";
+                    ||
+                note.title.trim()
+                    ||
+                "本文なし";
 
 
             return `
 
                 <div
-                    class="note-item ${
-                        note.id === selectedNoteId
+                    class="schedule-item ${
+                        selectedType === "schedule" &&
+                        selectedId === note.id
                             ? "active"
                             : ""
                     }"
                     data-id="${note.id}"
                 >
 
-                    <div class="note-item-title">
-                        ${escapeHTML(title)}
+                    <div class="schedule-date">
+                        ${formatJapaneseDate(
+                            note.date
+                        )}
                     </div>
 
-                    <div class="note-item-preview">
-                        ${escapeHTML(preview)}
-                    </div>
-
-                    <div class="note-item-date">
-                        ${formatJapaneseDate(note.date)}
+                    <div class="schedule-preview">
+                        ${escapeHTML(
+                            preview
+                        )}
                     </div>
 
                 </div>
@@ -1603,14 +2191,16 @@ function renderNoteList() {
 
 
     document
-        .querySelectorAll(".note-item")
+        .querySelectorAll(
+            ".schedule-item"
+        )
         .forEach(item => {
 
             item.addEventListener(
                 "click",
                 () => {
 
-                    openNote(
+                    openScheduleNote(
                         item.dataset.id
                     );
 
@@ -1622,99 +2212,206 @@ function renderNoteList() {
 }
 
 
-/* =========================
+/* =====================================================
+   普通のメモ一覧
+===================================================== */
+
+function renderNormalList() {
+
+    const keyword =
+        normalSearch.value
+            .trim()
+            .toLowerCase();
+
+
+    let list =
+        [...normalNotes];
+
+
+    if (keyword) {
+
+        list =
+            list.filter(
+                note => {
+
+                    const target =
+                        (
+                            note.title +
+                            " " +
+                            note.content
+                        ).toLowerCase();
+
+
+                    return target.includes(
+                        keyword
+                    );
+
+                }
+            );
+
+    }
+
+
+    list.sort(
+        (a, b) =>
+            b.updated -
+            a.updated
+    );
+
+
+    normalCount.textContent =
+        `${list.length}件`;
+
+
+    if (list.length === 0) {
+
+        normalList.innerHTML = `
+
+            <div class="empty-list">
+                普通のメモはありません。
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    normalList.innerHTML =
+        list.map(note => {
+
+            const title =
+                note.title.trim()
+                    ||
+                "タイトルなし";
+
+
+            const preview =
+                note.content
+                    .replace(
+                        /\n/g,
+                        " "
+                    )
+                    .trim()
+                    ||
+                "本文なし";
+
+
+            return `
+
+                <div
+                    class="note-item ${
+                        selectedType === "normal" &&
+                        selectedId === note.id
+                            ? "active"
+                            : ""
+                    }"
+                    data-id="${note.id}"
+                >
+
+                    <div class="note-item-title">
+                        ${escapeHTML(
+                            title
+                        )}
+                    </div>
+
+                    <div class="note-item-preview">
+                        ${escapeHTML(
+                            preview
+                        )}
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    document
+        .querySelectorAll(
+            ".note-item"
+        )
+        .forEach(item => {
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    openNormalNote(
+                        item.dataset.id
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =====================================================
    全体描画
-========================= */
+===================================================== */
 
 function renderAll() {
 
     renderCalendar();
 
-    renderNoteList();
+    renderScheduleList();
+
+    renderNormalList();
 
     loadEditor();
 
 }
 
 
-/* =========================
-   削除
-========================= */
+/* =====================================================
+   HTMLエスケープ
+===================================================== */
 
-function deleteCurrentNote() {
+function escapeHTML(text) {
 
-    const note =
-        getSelectedNote();
-
-    if (!note) {
-        return;
-    }
-
-
-    const index =
-        notes.findIndex(
-            item =>
-                item.id === note.id
+    return text
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
         );
-
-
-    if (index === -1) {
-        return;
-    }
-
-
-    const confirmed =
-        confirm(
-            "このメモを削除しますか？"
-        );
-
-
-    if (!confirmed) {
-        return;
-    }
-
-
-    notes.splice(
-        index,
-        1
-    );
-
-
-    if (notes.length === 0) {
-
-        createInitialNote();
-
-    } else {
-
-        const next =
-            notes[
-                Math.max(
-                    0,
-                    index - 1
-                )
-            ];
-
-        selectedNoteId =
-            next.id;
-
-    }
-
-
-    saveData();
-
-    renderAll();
 
 }
 
 
-/* =========================
+/* =====================================================
    TXT保存
-========================= */
+===================================================== */
 
 function saveTxt() {
 
+    /*
+        保存前の仮日程メモにも対応
+    */
+
     const note =
         getSelectedNote();
+
 
     if (!note) {
         return;
@@ -1723,13 +2420,24 @@ function saveTxt() {
 
     const title =
         note.title.trim()
-        || "メモ";
+        ||
+        (
+            note.type === "schedule"
+                ? "日程メモ"
+                : "メモ"
+        );
+
+
+    const dateText =
+        formatJapaneseDate(
+            note.date
+        );
 
 
     const text =
 `${title}
 
-${formatJapaneseDate(note.date)}
+${dateText}
 
 ${note.content}`;
 
@@ -1745,52 +2453,49 @@ ${note.content}`;
 
 
     const url =
-        URL.createObjectURL(blob);
+        URL.createObjectURL(
+            blob
+        );
 
 
     const a =
-        document.createElement("a");
+        document.createElement(
+            "a"
+        );
+
 
     a.href = url;
 
     a.download =
         `${title}.txt`;
 
+
     a.click();
 
 
-    URL.revokeObjectURL(url);
+    URL.revokeObjectURL(
+        url
+    );
 
 }
 
 
-/* =========================
-   HTMLエスケープ
-========================= */
-
-function escapeHTML(text) {
-
-    return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-/* =========================
+/* =====================================================
    今日
-========================= */
+===================================================== */
 
 function goToday() {
+
+    finalizeCurrentDraft();
+
 
     const now =
         new Date();
 
+
     calendarYear =
         now.getFullYear();
+
 
     calendarMonth =
         now.getMonth();
@@ -1801,19 +2506,22 @@ function goToday() {
 
 
     const existing =
-        notes.find(
+        scheduleNotes.find(
             note =>
-                note.date === todayKey
+                note.date ===
+                todayKey
         );
 
 
     if (existing) {
 
-        openNote(existing.id);
+        openScheduleNote(
+            existing.id
+        );
 
     } else {
 
-        createNoteForDate(
+        selectScheduleDate(
             todayKey
         );
 
@@ -1822,25 +2530,34 @@ function goToday() {
 }
 
 
-/* =========================
+/* =====================================================
    月移動
-========================= */
+===================================================== */
 
 document
-    .getElementById("prevMonth")
+    .getElementById(
+        "prevMonth"
+    )
     .addEventListener(
         "click",
         () => {
 
+            finalizeCurrentDraft();
+
+
             calendarMonth--;
 
-            if (calendarMonth < 0) {
+
+            if (
+                calendarMonth < 0
+            ) {
 
                 calendarMonth = 11;
                 calendarYear--;
 
             }
 
+
             renderCalendar();
 
         }
@@ -1848,40 +2565,53 @@ document
 
 
 document
-    .getElementById("nextMonth")
+    .getElementById(
+        "nextMonth"
+    )
     .addEventListener(
         "click",
         () => {
 
+            finalizeCurrentDraft();
+
+
             calendarMonth++;
 
-            if (calendarMonth > 11) {
+
+            if (
+                calendarMonth > 11
+            ) {
 
                 calendarMonth = 0;
                 calendarYear++;
 
             }
 
+
             renderCalendar();
 
         }
     );
 
 
-/* =========================
+/* =====================================================
    ボタン
-========================= */
+===================================================== */
 
 document
-    .getElementById("newButton")
+    .getElementById(
+        "newButton"
+    )
     .addEventListener(
         "click",
-        createNewNote
+        createNormalNote
     );
 
 
 document
-    .getElementById("todayButton")
+    .getElementById(
+        "todayButton"
+    )
     .addEventListener(
         "click",
         goToday
@@ -1889,16 +2619,34 @@ document
 
 
 document
-    .getElementById("saveTxtButton")
+    .getElementById(
+        "saveTxtButton"
+    )
     .addEventListener(
         "click",
         saveTxt
     );
 
 
-/* =========================
+/* =====================================================
+   検索
+===================================================== */
+
+scheduleSearch.addEventListener(
+    "input",
+    renderScheduleList
+);
+
+
+normalSearch.addEventListener(
+    "input",
+    renderNormalList
+);
+
+
+/* =====================================================
    入力
-========================= */
+===================================================== */
 
 titleInput.addEventListener(
     "input",
@@ -1912,21 +2660,17 @@ editor.addEventListener(
 );
 
 
-searchInput.addEventListener(
-    "input",
-    renderNoteList
-);
-
-
-/* =========================
+/* =====================================================
    キーボード
-========================= */
+===================================================== */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        /* Ctrl + S */
+        /*
+            Ctrl + S
+        */
 
         if (
             event.ctrlKey &&
@@ -1934,6 +2678,8 @@ document.addEventListener(
         ) {
 
             event.preventDefault();
+
+            finalizeCurrentDraft();
 
             saveData();
 
@@ -1943,7 +2689,10 @@ document.addEventListener(
         }
 
 
-        /* Ctrl + N */
+        /*
+            Ctrl + N
+            普通のメモ
+        */
 
         if (
             event.ctrlKey &&
@@ -1952,12 +2701,15 @@ document.addEventListener(
 
             event.preventDefault();
 
-            createNewNote();
+            createNormalNote();
 
         }
 
 
-        /* Ctrl + F */
+        /*
+            Ctrl + F
+            現在の種類に合わせて検索
+        */
 
         if (
             event.ctrlKey &&
@@ -1966,7 +2718,19 @@ document.addEventListener(
 
             event.preventDefault();
 
-            searchInput.focus();
+
+            if (
+                selectedType ===
+                "schedule"
+            ) {
+
+                scheduleSearch.focus();
+
+            } else {
+
+                normalSearch.focus();
+
+            }
 
         }
 
@@ -1974,55 +2738,104 @@ document.addEventListener(
 );
 
 
-/* =========================
-   起動
-========================= */
+/* =====================================================
+   ページを離れる前
+===================================================== */
 
-loadData();
+window.addEventListener(
+    "beforeunload",
+    () => {
 
-if (!selectedNoteId) {
+        finalizeCurrentDraft();
 
-    if (notes.length > 0) {
-
-        selectedNoteId =
-            [...notes]
-                .sort(
-                    (a, b) =>
-                        b.updated - a.updated
-                )[0].id;
+        saveData();
 
     }
-
-}
-
-
-if (!selectedNoteId) {
-
-    createInitialNote();
-
-}
+);
 
 
-renderAll();
-
-
-/* =========================
-   ヘッダーの日付
-========================= */
+/* =====================================================
+   ヘッダー日付
+===================================================== */
 
 function updateHeaderDate() {
 
     const now =
         new Date();
 
+
     document
-        .getElementById("currentDate")
+        .getElementById(
+            "currentDate"
+        )
         .textContent =
-        `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+        `${now.getFullYear()}年` +
+        `${now.getMonth() + 1}月` +
+        `${now.getDate()}日`;
 
 }
 
+
 updateHeaderDate();
+
+
+/* =====================================================
+   起動
+===================================================== */
+
+loadData();
+
+
+/*
+    最初に開くメモ
+
+    普通のメモがあればそれを開く。
+    なければ今日の日程メモがあれば開く。
+    それもなければ何も作らない。
+*/
+
+if (
+    normalNotes.length > 0
+) {
+
+    const latest =
+        [...normalNotes]
+            .sort(
+                (a, b) =>
+                    b.updated -
+                    a.updated
+            )[0];
+
+
+    selectedId =
+        latest.id;
+
+    selectedType =
+        "normal";
+
+} else if (
+    scheduleNotes.length > 0
+) {
+
+    const latest =
+        [...scheduleNotes]
+            .sort(
+                (a, b) =>
+                    b.updated -
+                    a.updated
+            )[0];
+
+
+    selectedId =
+        latest.id;
+
+    selectedType =
+        "schedule";
+
+}
+
+
+renderAll();
 
 </script>
 
