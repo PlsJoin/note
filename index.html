@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,15 +12,14 @@
 
 html,
 body {
+    margin: 0;
     width: 100%;
     height: 100%;
-    margin: 0;
 }
 
 body {
-    overflow: hidden;
-    background: #ffffff;
-    color: #000000;
+    background: #f5f3ee;
+    color: #111;
     font-family:
         "Yu Gothic UI",
         "Yu Gothic",
@@ -29,536 +27,483 @@ body {
         sans-serif;
 }
 
-button,
-input,
-select {
-    font-family: inherit;
-}
-
-button {
-    color: #000000;
-}
-
 /* =========================
-   APP
+   全体
 ========================= */
 
 .app {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #ffffff;
 }
 
 /* =========================
-   TOP BAR
+   ヘッダー
 ========================= */
 
-.topbar {
-    height: 52px;
-    flex-shrink: 0;
+.header {
+    height: 72px;
+    border-bottom: 1px solid #111;
     display: flex;
     align-items: center;
-    padding: 0 16px;
-    border-bottom: 1px solid #d8d8d8;
-    background: #ffffff;
+    justify-content: space-between;
+    padding: 0 32px;
+    background: #f5f3ee;
 }
 
 .logo {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: 0.3px;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
-.current-name {
-    margin-left: 24px;
-    min-width: 0;
-    max-width: 400px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.logo span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-left: 8px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.clock {
     font-size: 13px;
-    color: #333333;
-}
-
-.top-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.top-button {
-    height: 32px;
-    padding: 0 12px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    background: #ffffff;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.top-button:hover {
-    background: #f2f2f2;
-}
-
-.top-button:active {
-    background: #e7e7e7;
-}
-
-/* =========================
-   TOOLBAR
-========================= */
-
-.toolbar {
-    height: 46px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 3px;
-    padding: 0 12px;
-    border-bottom: 1px solid #d8d8d8;
-    background: #fafafa;
-}
-
-.tool {
-    width: 34px;
-    height: 32px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-}
-
-.tool:hover {
-    background: #e8e8e8;
-    border-color: #d5d5d5;
-}
-
-.tool.active {
-    background: #dcdcdc;
-    border-color: #c7c7c7;
-}
-
-.tool-bold {
     font-weight: 700;
-}
-
-.tool-italic {
-    font-style: italic;
-}
-
-.tool-underline {
-    text-decoration: underline;
-}
-
-.separator {
-    width: 1px;
-    height: 25px;
-    margin: 0 5px;
-    background: #d5d5d5;
-}
-
-.select {
-    height: 32px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #000000;
-    padding: 0 7px;
-    outline: none;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.font-select {
-    width: 150px;
-}
-
-.size-select {
-    width: 75px;
-}
-
-/* =========================
-   COLOR
-========================= */
-
-.color-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.color-button {
-    width: 34px;
-    height: 32px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.color-button:hover {
-    background: #e8e8e8;
-    border-color: #d5d5d5;
-}
-
-.color-icon {
-    width: 21px;
-    height: 21px;
-    border: 1px solid #999999;
-    display: block;
-    background: #000000;
-}
-
-.color-input {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 34px;
-    height: 32px;
-    opacity: 0;
-    cursor: pointer;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.main {
-    flex: 1;
-    min-height: 0;
-    display: flex;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.sidebar {
-    width: 270px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    border-right: 1px solid #d8d8d8;
-    background: #f7f7f7;
-}
-
-.sidebar-top {
-    height: 48px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    padding: 0 13px;
-    border-bottom: 1px solid #dddddd;
-}
-
-.sidebar-title {
-    font-size: 12px;
-    font-weight: 700;
+    font-variant-numeric: tabular-nums;
 }
 
 .new-button {
-    margin-left: auto;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    background: #ffffff;
+    border: 1px solid #111;
+    background: #111;
+    color: white;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
 }
 
 .new-button:hover {
-    background: #ededed;
+    background: #333;
 }
 
-.search {
-    height: 45px;
-    padding: 7px 10px;
-    border-bottom: 1px solid #dddddd;
+/* =========================
+   メイン
+========================= */
+
+.main {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    padding: 55px 30px 80px;
 }
 
-.search input {
+/* =========================
+   入力エリア
+========================= */
+
+.write-area {
+    max-width: 850px;
+    margin: 0 auto 80px;
+}
+
+.write-label {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+}
+
+.write-title {
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 0 0 30px;
+}
+
+.editor-wrap {
+    border-top: 2px solid #111;
+    border-bottom: 1px solid #111;
+}
+
+.editor {
     width: 100%;
-    height: 30px;
-    padding: 0 9px;
-    border: 1px solid #cfcfcf;
-    border-radius: 4px;
-    outline: none;
-    background: #ffffff;
-    color: #000000;
+    min-height: 180px;
+    padding: 25px 0;
+    border: 0;
+    outline: 0;
+    resize: vertical;
+    background: transparent;
+    color: #111;
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.editor::placeholder {
+    color: #777;
+}
+
+.write-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+}
+
+.hint {
+    color: #666;
     font-size: 12px;
 }
 
-.search input:focus {
-    border-color: #777777;
+.save-button {
+    border: 1px solid #111;
+    background: transparent;
+    color: #111;
+    padding: 10px 24px;
+    font-size: 13px;
+    font-weight: 900;
+    cursor: pointer;
 }
 
-.notes {
-    flex: 1;
-    overflow-y: auto;
+.save-button:hover {
+    background: #111;
+    color: white;
+}
+
+/* =========================
+   検索
+========================= */
+
+.timeline-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 2px solid #111;
+    padding-bottom: 14px;
+    margin-bottom: 0;
+}
+
+.timeline-title {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.count {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.search {
+    width: 250px;
+    border: 0;
+    border-bottom: 1px solid #111;
+    background: transparent;
+    outline: none;
+    padding: 8px 0;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+/* =========================
+   タイムライン
+========================= */
+
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 130px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #111;
 }
 
 .note {
     position: relative;
-    padding: 11px 13px;
-    border-bottom: 1px solid #e2e2e2;
-    cursor: pointer;
-    background: #f7f7f7;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-bottom: 1px solid #c9c6bf;
+    min-height: 145px;
 }
 
-.note:hover {
-    background: #eeeeee;
+.note-time {
+    padding: 25px 25px 25px 0;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.5;
 }
 
-.note.active {
-    background: #dddddd;
-}
-
-.note-title {
-    padding-right: 25px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 13px;
-    font-weight: 700;
-    color: #000000;
-}
-
-.note-preview {
-    margin-top: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-size: 11px;
-    color: #555555;
-}
-
-.note-date {
-    margin-top: 6px;
-    font-size: 10px;
-    color: #777777;
-}
-
-.delete-note {
-    position: absolute;
-    top: 9px;
-    right: 8px;
-    width: 25px;
-    height: 25px;
-    border: 0;
-    border-radius: 4px;
-    background: transparent;
-    color: #555555;
-    cursor: pointer;
-    display: none;
-    font-size: 15px;
-}
-
-.note:hover .delete-note {
+.note-time .date {
     display: block;
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 4px;
 }
 
-.delete-note:hover {
-    background: #d6d6d6;
-    color: #000000;
+.note-content {
+    padding: 25px 0 25px 38px;
+    cursor: pointer;
+    position: relative;
 }
 
-/* =========================
-   EDITOR
-========================= */
-
-.editor-area {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    background: #ffffff;
+.note-content:hover {
+    background: rgba(0, 0, 0, 0.025);
 }
 
-.title-input {
-    width: 100%;
-    height: 60px;
-    flex-shrink: 0;
-    padding: 16px 34px 8px;
-    border: 0;
-    outline: 0;
-    background: #ffffff;
-    color: #000000;
-    font-size: 22px;
-    font-weight: 700;
+.note-dot {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: #111;
+    border-radius: 50%;
+    left: -4px;
+    top: 31px;
 }
 
-.title-input::placeholder {
-    color: #888888;
-}
-
-.editor {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    padding: 6px 34px 50px;
-    outline: none;
-    color: #000000;
-    background: #ffffff;
-    font-family:
-        "Yu Gothic UI",
-        "Yu Gothic",
-        "Meiryo",
-        sans-serif;
-    font-size: 15px;
-    line-height: 1.9;
+.note-text {
+    white-space: pre-wrap;
     word-break: break-word;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 500;
+    max-width: 760px;
 }
 
-.editor:empty::before {
-    content: attr(data-placeholder);
-    color: #999999;
-    pointer-events: none;
-}
-
-.editor:focus:empty::before {
-    color: #aaaaaa;
-}
-
-.editor p {
-    margin: 0 0 8px 0;
-}
-
-.editor h1,
-.editor h2,
-.editor h3 {
-    margin-top: 18px;
-    margin-bottom: 8px;
-    color: #000000;
-}
-
-.editor h1 {
-    font-size: 26px;
-}
-
-.editor h2 {
-    font-size: 21px;
-}
-
-.editor h3 {
-    font-size: 18px;
-}
-
-.editor ul,
-.editor ol {
-    padding-left: 28px;
-}
-
-/* =========================
-   STATUS
-========================= */
-
-.status {
-    height: 30px;
-    flex-shrink: 0;
+.note-meta {
     display: flex;
     align-items: center;
-    padding: 0 14px;
-    border-top: 1px solid #d8d8d8;
-    background: #f5f5f5;
-    color: #555555;
-    font-size: 10px;
+    gap: 12px;
+    margin-top: 13px;
+    color: #777;
+    font-size: 11px;
 }
 
-.status-left {
-    display: flex;
-    gap: 16px;
+.pin {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    color: #777;
+    padding: 0;
+    font-family: inherit;
+    font-size: 11px;
 }
 
-.status-right {
-    margin-left: auto;
+.pin.active {
+    color: #111;
+    font-weight: 900;
 }
 
 /* =========================
-   CONTEXT MESSAGE
+   空状態
 ========================= */
 
-.no-note {
-    flex: 1;
+.empty {
+    padding: 80px 20px;
+    text-align: center;
+    color: #777;
+    border-bottom: 1px solid #111;
+}
+
+.empty-big {
+    font-size: 18px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 10px;
+}
+
+.empty-small {
+    font-size: 12px;
+}
+
+/* =========================
+   編集モーダル
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(245, 243, 238, 0.94);
     display: none;
     align-items: center;
     justify-content: center;
-    color: #777777;
+    padding: 30px;
+    z-index: 100;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: min(850px, 100%);
+    border: 1px solid #111;
+    background: #f5f3ee;
+    padding: 30px;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.modal-title {
     font-size: 13px;
+    font-weight: 900;
+}
+
+.close {
+    border: 0;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color: #111;
+}
+
+.edit-area {
+    width: 100%;
+    min-height: 300px;
+    border: 0;
+    border-top: 2px solid #111;
+    border-bottom: 1px solid #111;
+    outline: none;
+    resize: vertical;
+    background: transparent;
+    padding: 25px 0;
+    color: #111;
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.modal-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.delete-button {
+    border: 0;
+    background: transparent;
+    color: #b00000;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.update-button {
+    border: 1px solid #111;
+    background: #111;
+    color: white;
+    padding: 10px 22px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
 }
 
 /* =========================
-   SCROLLBAR
+   レスポンシブ
 ========================= */
 
-::-webkit-scrollbar {
-    width: 9px;
-    height: 9px;
-}
+@media (max-width: 700px) {
 
-::-webkit-scrollbar-track {
-    background: #f4f4f4;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #c7c7c7;
-    border-radius: 0;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #aaaaaa;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 750px) {
-
-    .sidebar {
-        width: 220px;
+    .header {
+        height: 62px;
+        padding: 0 18px;
     }
 
-    .current-name {
+    .logo {
+        font-size: 21px;
+    }
+
+    .logo span {
         display: none;
     }
 
+    .clock {
+        display: none;
+    }
+
+    .main {
+        padding: 35px 18px 60px;
+    }
+
+    .write-area {
+        margin-bottom: 55px;
+    }
+
+    .write-title {
+        font-size: 36px;
+        letter-spacing: -1.5px;
+    }
+
     .editor {
-        padding-left: 20px;
-        padding-right: 20px;
+        font-size: 16px;
     }
 
-    .title-input {
-        padding-left: 20px;
+    .timeline-head {
+        display: block;
     }
 
-    .toolbar {
-        overflow-x: auto;
+    .timeline-title {
+        margin-bottom: 18px;
     }
 
-}
-
-@media (max-width: 580px) {
-
-    .sidebar {
-        width: 185px;
+    .search {
+        width: 100%;
     }
 
-    .font-select {
-        width: 120px;
+    .timeline::before {
+        left: 74px;
     }
 
+    .note {
+        grid-template-columns: 74px 1fr;
+    }
+
+    .note-time {
+        padding: 20px 15px 20px 0;
+        font-size: 10px;
+    }
+
+    .note-time .date {
+        font-size: 9px;
+    }
+
+    .note-content {
+        padding: 20px 0 20px 25px;
+    }
+
+    .note-dot {
+        top: 26px;
+    }
+
+    .note-text {
+        font-size: 14px;
+    }
+
+    .modal {
+        padding: 15px;
+    }
+
+    .modal-box {
+        padding: 20px;
+    }
 }
 </style>
 </head>
@@ -567,1445 +512,681 @@ button {
 
 <div class="app">
 
-    <!-- =========================
-         TOP BAR
-    ========================= -->
-
-    <header class="topbar">
-
+    <header class="header">
         <div class="logo">
             DOL NOTE
+            <span>THINK / WRITE / KEEP</span>
         </div>
 
-        <div
-            class="current-name"
-            id="currentName"
-        >
-            無題
-        </div>
+        <div class="header-right">
+            <div class="clock" id="clock"></div>
 
-        <div class="top-actions">
-
-            <button
-                class="top-button"
-                onclick="createNote()"
-            >
-                新規
+            <button class="new-button" id="newButton">
+                ＋ 新しいメモ
             </button>
-
-            <button
-                class="top-button"
-                onclick="downloadCurrentNote()"
-            >
-                TXT保存
-            </button>
-
         </div>
-
     </header>
 
 
-    <!-- =========================
-         TOOLBAR
-    ========================= -->
-
-    <div class="toolbar">
-
-        <button
-            class="tool tool-bold"
-            id="boldButton"
-            title="太字 Ctrl+B"
-            onclick="execFormat('bold')"
-        >
-            B
-        </button>
-
-        <button
-            class="tool tool-italic"
-            id="italicButton"
-            title="斜体 Ctrl+I"
-            onclick="execFormat('italic')"
-        >
-            I
-        </button>
-
-        <button
-            class="tool tool-underline"
-            id="underlineButton"
-            title="下線 Ctrl+U"
-            onclick="execFormat('underline')"
-        >
-            U
-        </button>
-
-        <div class="separator"></div>
-
-        <select
-            class="select font-select"
-            id="fontSelect"
-            onchange="changeFont()"
-            title="フォント"
-        >
-            <option value='"Yu Gothic UI","Yu Gothic","Meiryo",sans-serif'>
-                Yu Gothic
-            </option>
-
-            <option value='"Meiryo",sans-serif'>
-                Meiryo
-            </option>
-
-            <option value='"Segoe UI",sans-serif'>
-                Segoe UI
-            </option>
-
-            <option value='Arial,sans-serif'>
-                Arial
-            </option>
-
-            <option value='Consolas,monospace'>
-                Consolas
-            </option>
-
-            <option value='"MS Gothic",monospace'>
-                MS Gothic
-            </option>
-        </select>
-
-        <select
-            class="select size-select"
-            id="sizeSelect"
-            onchange="changeSize()"
-            title="文字サイズ"
-        >
-            <option value="1">12</option>
-            <option value="2">14</option>
-            <option value="3" selected>16</option>
-            <option value="4">18</option>
-            <option value="5">20</option>
-            <option value="6">24</option>
-            <option value="7">28</option>
-        </select>
-
-        <div class="separator"></div>
-
-        <button
-            class="tool"
-            title="元に戻す Ctrl+Z"
-            onclick="execFormat('undo')"
-        >
-            ↶
-        </button>
-
-        <button
-            class="tool"
-            title="やり直す Ctrl+Y"
-            onclick="execFormat('redo')"
-        >
-            ↷
-        </button>
-
-        <div class="separator"></div>
-
-        <button
-            class="tool"
-            title="左揃え"
-            onclick="execFormat('justifyLeft')"
-        >
-            ≡
-        </button>
-
-        <button
-            class="tool"
-            title="中央揃え"
-            onclick="execFormat('justifyCenter')"
-        >
-            ≡
-        </button>
-
-        <button
-            class="tool"
-            title="右揃え"
-            onclick="execFormat('justifyRight')"
-        >
-            ≡
-        </button>
-
-        <div class="separator"></div>
-
-        <div class="color-wrapper">
-
-            <button
-                class="color-button"
-                title="文字色"
-            >
-                <span
-                    class="color-icon"
-                    id="colorIcon"
-                ></span>
-            </button>
-
-            <input
-                class="color-input"
-                id="colorInput"
-                type="color"
-                value="#000000"
-                title="文字色"
-            >
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         MAIN
-    ========================= -->
-
     <main class="main">
 
-        <!-- SIDEBAR -->
+        <section class="write-area">
 
-        <aside class="sidebar">
+            <div class="write-label">
+                NEW NOTE
+            </div>
 
-            <div class="sidebar-top">
+            <h1 class="write-title">
+                今、何を考えてる？
+            </h1>
 
-                <div class="sidebar-title">
-                    ノート
+            <div class="editor-wrap">
+                <textarea
+                    id="editor"
+                    class="editor"
+                    placeholder="思いついたことを、そのまま書く。&#10;&#10;タイトルはいりません。きれいにまとめる必要もありません。"
+                ></textarea>
+            </div>
+
+            <div class="write-bottom">
+
+                <div class="hint">
+                    Ctrl + Enter で保存
                 </div>
 
-                <button
-                    class="new-button"
-                    onclick="createNote()"
-                    title="新しいノート"
-                >
-                    +
+                <button class="save-button" id="saveButton">
+                    保存する
                 </button>
 
             </div>
 
+        </section>
 
-            <div class="search">
+
+        <section>
+
+            <div class="timeline-head">
+
+                <div>
+                    <div class="timeline-title">
+                        TIMELINE
+                    </div>
+
+                    <div class="count" id="count">
+                        0 NOTES
+                    </div>
+                </div>
 
                 <input
-                    id="searchInput"
-                    type="text"
-                    placeholder="ノートを検索"
-                    oninput="renderNotes()"
+                    type="search"
+                    class="search"
+                    id="search"
+                    placeholder="メモを検索"
                 >
 
             </div>
 
-
-            <div
-                class="notes"
-                id="notes"
-            ></div>
-
-        </aside>
-
-
-        <!-- EDITOR -->
-
-        <section class="editor-area">
-
-            <div id="editorContainer">
-
-                <input
-                    class="title-input"
-                    id="titleInput"
-                    type="text"
-                    placeholder="タイトル"
-                    autocomplete="off"
-                >
-
-                <div
-                    class="editor"
-                    id="editor"
-                    contenteditable="true"
-                    spellcheck="true"
-                    data-placeholder="ここに入力..."
-                ></div>
-
-            </div>
-
-            <div
-                class="no-note"
-                id="noNote"
-            >
-                ノートを選択してください
-            </div>
+            <div class="timeline" id="timeline"></div>
 
         </section>
 
     </main>
 
+</div>
 
-    <!-- STATUS -->
 
-    <footer class="status">
+<!-- 編集モーダル -->
 
-        <div class="status-left">
+<div class="modal" id="modal">
 
-            <span id="charCount">
-                0文字
-            </span>
+    <div class="modal-box">
 
-            <span id="lineCount">
-                1行
-            </span>
+        <div class="modal-top">
 
-            <span id="saveState">
-                保存済み
-            </span>
+            <div class="modal-title">
+                EDIT NOTE
+            </div>
+
+            <button class="close" id="closeModal">
+                ×
+            </button>
 
         </div>
 
-        <div class="status-right">
-            DOL NOTE
+        <textarea
+            class="edit-area"
+            id="editArea"
+        ></textarea>
+
+        <div class="modal-bottom">
+
+            <button class="delete-button" id="deleteButton">
+                このメモを削除
+            </button>
+
+            <button class="update-button" id="updateButton">
+                保存する
+            </button>
+
         </div>
 
-    </footer>
+    </div>
 
 </div>
 
 
 <script>
 
-/* =========================
-   STORAGE
-========================= */
-
-const STORAGE_KEY =
-    "dol_note_v2";
-
+const STORAGE_KEY = "dol_note_timeline_v1";
 
 let notes = [];
-
-let currentNoteId =
-    null;
-
-let savedSelection =
-    null;
+let editingId = null;
 
 
 /* =========================
-   ELEMENTS
+   初期化
 ========================= */
 
-const titleInput =
-    document.getElementById(
-        "titleInput"
-    );
+function loadNotes() {
 
-const editor =
-    document.getElementById(
-        "editor"
-    );
+    try {
 
-const notesElement =
-    document.getElementById(
-        "notes"
-    );
+        const saved = localStorage.getItem(STORAGE_KEY);
 
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-const currentName =
-    document.getElementById(
-        "currentName"
-    );
-
-const charCount =
-    document.getElementById(
-        "charCount"
-    );
-
-const lineCount =
-    document.getElementById(
-        "lineCount"
-    );
-
-const saveState =
-    document.getElementById(
-        "saveState"
-    );
-
-
-/* =========================
-   LOAD
-========================= */
-
-function loadData() {
-
-    const data =
-        localStorage.getItem(
-            STORAGE_KEY
-        );
-
-    if (data) {
-
-        try {
-
-            notes =
-                JSON.parse(data);
-
-        } catch {
-
-            notes = [];
-
+        if (saved) {
+            notes = JSON.parse(saved);
         }
 
-    }
+    } catch (error) {
 
-    if (!Array.isArray(notes)) {
         notes = [];
-    }
-
-    if (notes.length === 0) {
-
-        createNote();
-
-    } else {
-
-        openNote(
-            notes[0].id
-        );
 
     }
+
+    render();
 
 }
 
 
-/* =========================
-   SAVE DATA
-========================= */
-
-function saveData() {
+function saveNotes() {
 
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(notes)
     );
 
-    saveState.textContent =
-        "保存済み";
+}
+
+
+/* =========================
+   ID
+========================= */
+
+function createId() {
+
+    return Date.now().toString(36)
+        + Math.random().toString(36).slice(2);
 
 }
 
 
 /* =========================
-   CREATE NOTE
-========================= */
-
-function createNote() {
-
-    const id =
-        Date.now();
-
-    const note = {
-
-        id: id,
-
-        title: "無題",
-
-        content: "",
-
-        updated:
-            Date.now()
-
-    };
-
-    notes.unshift(
-        note
-    );
-
-    currentNoteId =
-        id;
-
-    saveData();
-
-    renderNotes();
-
-    loadCurrentNote();
-
-    titleInput.focus();
-
-}
-
-
-/* =========================
-   OPEN NOTE
-========================= */
-
-function openNote(id) {
-
-    const note =
-        notes.find(
-            item =>
-                item.id === id
-        );
-
-    if (!note) {
-        return;
-    }
-
-    currentNoteId =
-        id;
-
-    loadCurrentNote();
-
-    renderNotes();
-
-}
-
-
-/* =========================
-   LOAD CURRENT NOTE
-========================= */
-
-function loadCurrentNote() {
-
-    const note =
-        notes.find(
-            item =>
-                item.id === currentNoteId
-        );
-
-    if (!note) {
-
-        document.getElementById(
-            "editorContainer"
-        ).style.display =
-            "none";
-
-        document.getElementById(
-            "noNote"
-        ).style.display =
-            "flex";
-
-        return;
-
-    }
-
-    document.getElementById(
-        "editorContainer"
-    ).style.display =
-        "flex";
-
-    document.getElementById(
-        "editorContainer"
-    ).style.flexDirection =
-        "column";
-
-    document.getElementById(
-        "editorContainer"
-    ).style.flex =
-        "1";
-
-    document.getElementById(
-        "editorContainer"
-    ).style.minHeight =
-        "0";
-
-    document.getElementById(
-        "noNote"
-    ).style.display =
-        "none";
-
-
-    titleInput.value =
-        note.title || "無題";
-
-
-    editor.innerHTML =
-        note.content || "";
-
-
-    currentName.textContent =
-        note.title || "無題";
-
-
-    updateStats();
-
-}
-
-
-/* =========================
-   UPDATE CURRENT
-========================= */
-
-function updateCurrentNote() {
-
-    const note =
-        notes.find(
-            item =>
-                item.id === currentNoteId
-        );
-
-    if (!note) {
-        return;
-    }
-
-
-    note.title =
-        titleInput.value.trim()
-        || "無題";
-
-
-    note.content =
-        editor.innerHTML;
-
-
-    note.updated =
-        Date.now();
-
-
-    currentName.textContent =
-        note.title;
-
-
-    saveState.textContent =
-        "保存中...";
-
-
-    clearTimeout(
-        window.saveTimer
-    );
-
-
-    window.saveTimer =
-        setTimeout(
-            function() {
-
-                saveData();
-
-                renderNotes();
-
-            },
-            350
-        );
-
-
-    updateStats();
-
-}
-
-
-/* =========================
-   RENDER NOTES
-========================= */
-
-function renderNotes() {
-
-    const keyword =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-
-    notesElement.innerHTML =
-        "";
-
-
-    const filtered =
-        notes.filter(
-            note => {
-
-                const title =
-                    note.title
-                        .toLowerCase();
-
-                const text =
-                    stripHTML(
-                        note.content
-                    )
-                    .toLowerCase();
-
-                return (
-                    title.includes(
-                        keyword
-                    )
-                    ||
-                    text.includes(
-                        keyword
-                    )
-                );
-
-            }
-        );
-
-
-    filtered.forEach(
-        function(note) {
-
-            const item =
-                document.createElement(
-                    "div"
-                );
-
-            item.className =
-                "note";
-
-
-            if (
-                note.id ===
-                currentNoteId
-            ) {
-
-                item.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            const title =
-                document.createElement(
-                    "div"
-                );
-
-            title.className =
-                "note-title";
-
-            title.textContent =
-                note.title ||
-                "無題";
-
-
-            const preview =
-                document.createElement(
-                    "div"
-                );
-
-            preview.className =
-                "note-preview";
-
-            preview.textContent =
-                stripHTML(
-                    note.content
-                )
-                .replace(
-                    /\s+/g,
-                    " "
-                )
-                .slice(
-                    0,
-                    65
-                )
-                ||
-                "内容なし";
-
-
-            const date =
-                document.createElement(
-                    "div"
-                );
-
-            date.className =
-                "note-date";
-
-            date.textContent =
-                formatDate(
-                    note.updated
-                );
-
-
-            const deleteButton =
-                document.createElement(
-                    "button"
-                );
-
-            deleteButton.className =
-                "delete-note";
-
-            deleteButton.textContent =
-                "×";
-
-            deleteButton.title =
-                "削除";
-
-
-            deleteButton.onclick =
-                function(event) {
-
-                    event.stopPropagation();
-
-                    deleteNote(
-                        note.id
-                    );
-
-                };
-
-
-            item.appendChild(
-                title
-            );
-
-            item.appendChild(
-                preview
-            );
-
-            item.appendChild(
-                date
-            );
-
-            item.appendChild(
-                deleteButton
-            );
-
-
-            item.onclick =
-                function() {
-
-                    openNote(
-                        note.id
-                    );
-
-                };
-
-
-            notesElement.appendChild(
-                item
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================
-   DELETE
-========================= */
-
-function deleteNote(id) {
-
-    const note =
-        notes.find(
-            item =>
-                item.id === id
-        );
-
-    if (!note) {
-        return;
-    }
-
-
-    const confirmed =
-        confirm(
-            `「${note.title}」を削除しますか？`
-        );
-
-
-    if (!confirmed) {
-        return;
-    }
-
-
-    notes =
-        notes.filter(
-            item =>
-                item.id !== id
-        );
-
-
-    if (
-        currentNoteId === id
-    ) {
-
-        if (
-            notes.length > 0
-        ) {
-
-            currentNoteId =
-                notes[0].id;
-
-            loadCurrentNote();
-
-        } else {
-
-            currentNoteId =
-                null;
-
-            createNote();
-
-        }
-
-    }
-
-
-    saveData();
-
-    renderNotes();
-
-}
-
-
-/* =========================
-   FORMAT
-========================= */
-
-function execFormat(command) {
-
-    editor.focus();
-
-    document.execCommand(
-        command,
-        false,
-        null
-    );
-
-    updateToolbarState();
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   FONT
-========================= */
-
-function changeFont() {
-
-    const value =
-        document.getElementById(
-            "fontSelect"
-        ).value;
-
-
-    editor.focus();
-
-
-    document.execCommand(
-        "fontName",
-        false,
-        value
-    );
-
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   SIZE
-========================= */
-
-function changeSize() {
-
-    const value =
-        document.getElementById(
-            "sizeSelect"
-        ).value;
-
-
-    editor.focus();
-
-
-    document.execCommand(
-        "fontSize",
-        false,
-        value
-    );
-
-
-    updateCurrentNote();
-
-}
-
-
-/* =========================
-   COLOR
-========================= */
-
-const colorInput =
-    document.getElementById(
-        "colorInput"
-    );
-
-const colorIcon =
-    document.getElementById(
-        "colorIcon"
-    );
-
-
-colorInput.addEventListener(
-    "input",
-    function() {
-
-        colorIcon.style.background =
-            colorInput.value;
-
-    }
-);
-
-
-colorInput.addEventListener(
-    "change",
-    function() {
-
-        editor.focus();
-
-        document.execCommand(
-            "foreColor",
-            false,
-            colorInput.value
-        );
-
-        updateCurrentNote();
-
-    }
-);
-
-
-/* =========================
-   TOOLBAR STATE
-========================= */
-
-function updateToolbarState() {
-
-    const commands = [
-        [
-            "bold",
-            "boldButton"
-        ],
-        [
-            "italic",
-            "italicButton"
-        ],
-        [
-            "underline",
-            "underlineButton"
-        ]
-    ];
-
-
-    commands.forEach(
-        function(pair) {
-
-            const command =
-                pair[0];
-
-            const id =
-                pair[1];
-
-            const button =
-                document.getElementById(
-                    id
-                );
-
-
-            try {
-
-                if (
-                    document.queryCommandState(
-                        command
-                    )
-                ) {
-
-                    button.classList.add(
-                        "active"
-                    );
-
-                } else {
-
-                    button.classList.remove(
-                        "active"
-                    );
-
-                }
-
-            } catch {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================
-   SELECTION
-========================= */
-
-document.addEventListener(
-    "selectionchange",
-    function() {
-
-        if (
-            document.activeElement ===
-                editor ||
-            editor.contains(
-                document.activeElement
-            )
-        ) {
-
-            updateToolbarState();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   STATS
-========================= */
-
-function updateStats() {
-
-    const text =
-        editor.innerText || "";
-
-
-    charCount.textContent =
-        `${text.length}文字`;
-
-
-    const lines =
-        text.length === 0
-            ? 1
-            : text.split(
-                "\n"
-            ).length;
-
-
-    lineCount.textContent =
-        `${lines}行`;
-
-}
-
-
-/* =========================
-   STRIP HTML
-========================= */
-
-function stripHTML(html) {
-
-    const temporary =
-        document.createElement(
-            "div"
-        );
-
-    temporary.innerHTML =
-        html || "";
-
-    return (
-        temporary.innerText || ""
-    );
-
-}
-
-
-/* =========================
-   DATE
+   日付
 ========================= */
 
 function formatDate(timestamp) {
 
-    const date =
-        new Date(
-            timestamp
-        );
+    const d = new Date(timestamp);
+
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+
+    return `${y}/${m}/${day}`;
+
+}
 
 
-    const year =
-        date.getFullYear();
+function formatTime(timestamp) {
 
+    const d = new Date(timestamp);
 
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
+    const h = String(d.getHours()).padStart(2, "0");
+    const m = String(d.getMinutes()).padStart(2, "0");
 
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const hour =
-        String(
-            date.getHours()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const minute =
-        String(
-            date.getMinutes()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    return (
-        `${year}/${month}/${day} ${hour}:${minute}`
-    );
+    return `${h}:${m}`;
 
 }
 
 
 /* =========================
-   DOWNLOAD
+   メモ追加
 ========================= */
 
-function downloadCurrentNote() {
+function addNote() {
 
-    const note =
-        notes.find(
-            item =>
-                item.id ===
-                currentNoteId
-        );
+    const editor = document.getElementById("editor");
 
+    const text = editor.value.trim();
+
+    if (!text) {
+
+        editor.focus();
+
+        return;
+
+    }
+
+    const note = {
+
+        id: createId(),
+
+        text: text,
+
+        created: Date.now(),
+
+        pinned: false
+
+    };
+
+    notes.unshift(note);
+
+    saveNotes();
+
+    editor.value = "";
+
+    render();
+
+    editor.focus();
+
+}
+
+
+/* =========================
+   表示
+========================= */
+
+function render() {
+
+    const timeline = document.getElementById("timeline");
+
+    const search = document
+        .getElementById("search")
+        .value
+        .trim()
+        .toLowerCase();
+
+    let filtered = notes.filter(note => {
+
+        if (!search) {
+            return true;
+        }
+
+        return note.text
+            .toLowerCase()
+            .includes(search);
+
+    });
+
+
+    filtered.sort((a, b) => {
+
+        if (a.pinned !== b.pinned) {
+            return a.pinned ? -1 : 1;
+        }
+
+        return b.created - a.created;
+
+    });
+
+
+    document.getElementById("count").textContent =
+        `${filtered.length} NOTES`;
+
+
+    if (filtered.length === 0) {
+
+        timeline.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-big">
+                    まだメモがありません。
+                </div>
+
+                <div class="empty-small">
+                    思いついたことを上に書いてください。
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    timeline.innerHTML = filtered.map(note => {
+
+        const escaped = escapeHTML(note.text);
+
+        return `
+
+            <article class="note">
+
+                <div class="note-time">
+
+                    <span class="date">
+                        ${formatDate(note.created)}
+                    </span>
+
+                    ${formatTime(note.created)}
+
+                </div>
+
+
+                <div
+                    class="note-content"
+                    data-id="${note.id}"
+                >
+
+                    <span class="note-dot"></span>
+
+                    <div class="note-text">
+                        ${escaped}
+                    </div>
+
+                    <div class="note-meta">
+
+                        <button
+                            class="pin ${note.pinned ? "active" : ""}"
+                            data-pin="${note.id}"
+                        >
+                            ${note.pinned ? "PINNED" : "PIN"}
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        `;
+
+    }).join("");
+
+
+    document.querySelectorAll(".note-content")
+        .forEach(element => {
+
+            element.addEventListener("click", event => {
+
+                if (
+                    event.target.closest(".pin")
+                ) {
+                    return;
+                }
+
+                openEditor(element.dataset.id);
+
+            });
+
+        });
+
+
+    document.querySelectorAll("[data-pin]")
+        .forEach(button => {
+
+            button.addEventListener("click", event => {
+
+                event.stopPropagation();
+
+                togglePin(button.dataset.pin);
+
+            });
+
+        });
+
+}
+
+
+/* =========================
+   HTML安全処理
+========================= */
+
+function escapeHTML(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;")
+        .replaceAll("\n", "<br>");
+
+}
+
+
+/* =========================
+   PIN
+========================= */
+
+function togglePin(id) {
+
+    const note = notes.find(
+        note => note.id === id
+    );
 
     if (!note) {
         return;
     }
 
+    note.pinned = !note.pinned;
 
-    const text =
-        stripHTML(
-            note.content
-        );
+    saveNotes();
 
-
-    const blob =
-        new Blob(
-            [text],
-            {
-                type:
-                    "text/plain;charset=utf-8"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        `${note.title || "無題"}.txt`;
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-
-    URL.revokeObjectURL(
-        url
-    );
+    render();
 
 }
 
 
 /* =========================
-   KEYBOARD SHORTCUTS
+   編集
 ========================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+function openEditor(id) {
 
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "s"
-        ) {
+    const note = notes.find(
+        note => note.id === id
+    );
 
-            event.preventDefault();
-
-            saveData();
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "n"
-        ) {
-
-            event.preventDefault();
-
-            createNote();
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "b"
-        ) {
-
-            event.preventDefault();
-
-            execFormat(
-                "bold"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "i"
-        ) {
-
-            event.preventDefault();
-
-            execFormat(
-                "italic"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "u"
-        ) {
-
-            event.preventDefault();
-
-            execFormat(
-                "underline"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "z"
-        ) {
-
-            event.preventDefault();
-
-            execFormat(
-                "undo"
-            );
-
-            return;
-
-        }
-
-
-        if (
-            event.ctrlKey &&
-            event.key.toLowerCase()
-                === "y"
-        ) {
-
-            event.preventDefault();
-
-            execFormat(
-                "redo"
-            );
-
-            return;
-
-        }
-
+    if (!note) {
+        return;
     }
-);
+
+    editingId = id;
+
+    document.getElementById("editArea").value =
+        note.text;
+
+    document.getElementById("modal")
+        .classList.add("show");
+
+    setTimeout(() => {
+
+        document.getElementById("editArea")
+            .focus();
+
+    }, 50);
+
+}
+
+
+function closeEditor() {
+
+    editingId = null;
+
+    document.getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+function updateNote() {
+
+    if (!editingId) {
+        return;
+    }
+
+    const text =
+        document.getElementById("editArea")
+            .value
+            .trim();
+
+    if (!text) {
+        return;
+    }
+
+    const note = notes.find(
+        note => note.id === editingId
+    );
+
+    if (!note) {
+        return;
+    }
+
+    note.text = text;
+
+    saveNotes();
+
+    closeEditor();
+
+    render();
+
+}
 
 
 /* =========================
-   EVENTS
+   削除
 ========================= */
 
-titleInput.addEventListener(
-    "input",
-    updateCurrentNote
-);
+function deleteNote() {
 
-
-editor.addEventListener(
-    "input",
-    function() {
-
-        updateCurrentNote();
-
-        updateToolbarState();
-
+    if (!editingId) {
+        return;
     }
-);
 
+    const index = notes.findIndex(
+        note => note.id === editingId
+    );
 
-editor.addEventListener(
-    "keyup",
-    updateToolbarState
-);
+    if (index === -1) {
+        return;
+    }
 
+    notes.splice(index, 1);
 
-editor.addEventListener(
-    "mouseup",
-    updateToolbarState
-);
+    saveNotes();
+
+    closeEditor();
+
+    render();
+
+}
 
 
 /* =========================
-   START
+   時計
 ========================= */
 
-loadData();
+function updateClock() {
+
+    const now = new Date();
+
+    const y = now.getFullYear();
+    const m = String(now.getMonth() + 1).padStart(2, "0");
+    const d = String(now.getDate()).padStart(2, "0");
+
+    const h = String(now.getHours()).padStart(2, "0");
+    const min = String(now.getMinutes()).padStart(2, "0");
+
+    document.getElementById("clock").textContent =
+        `${y}/${m}/${d}  ${h}:${min}`;
+
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+
+/* =========================
+   イベント
+========================= */
+
+document
+    .getElementById("saveButton")
+    .addEventListener("click", addNote);
+
+
+document
+    .getElementById("newButton")
+    .addEventListener("click", () => {
+
+        document.getElementById("editor")
+            .focus();
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+document
+    .getElementById("search")
+    .addEventListener("input", render);
+
+
+document
+    .getElementById("closeModal")
+    .addEventListener("click", closeEditor);
+
+
+document
+    .getElementById("updateButton")
+    .addEventListener("click", updateNote);
+
+
+document
+    .getElementById("deleteButton")
+    .addEventListener("click", deleteNote);
+
+
+/* Ctrl + Enter */
+
+document
+    .getElementById("editor")
+    .addEventListener("keydown", event => {
+
+        if (
+            event.ctrlKey &&
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            addNote();
+
+        }
+
+    });
+
+
+/* モーダル外クリック */
+
+document
+    .getElementById("modal")
+    .addEventListener("click", event => {
+
+        if (
+            event.target.id === "modal"
+        ) {
+
+            closeEditor();
+
+        }
+
+    });
+
+
+/* Escape */
+
+document.addEventListener("keydown", event => {
+
+    if (
+        event.key === "Escape" &&
+        document
+            .getElementById("modal")
+            .classList.contains("show")
+    ) {
+
+        closeEditor();
+
+    }
+
+});
+
+
+/* =========================
+   起動
+========================= */
+
+loadNotes();
 
 </script>
 
 </body>
 </html>
-```
